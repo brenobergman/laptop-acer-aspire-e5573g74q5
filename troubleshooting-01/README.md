@@ -6,9 +6,12 @@
 [![YouTube](https://img.shields.io/badge/Assistir%20ao%20reparo-red?logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=jOHRt1e4rxw) ---> *Procedimento resumido + dicas de uso/manutenção.
 
 ---
->Este procedimento está documentadao em duas versões:
+
+> [!NOTE]
+> Este procedimento está documentadao em duas versões:
 >- **Base de Conhecimento:** mais concisa, simulando como seria se fosse um procedimento numa empresa de supporte, onde a documentação ficaria dispoível para consulta posterior. 
 >- **Passos da resolução:** o procedimento seguido para o reparo no equipamento, seguindo o que fora recomendado no curso da Cisco Networking Academy: "It Costumer Support Basics.
+
 ---
 
 ## 📍 Sumário
@@ -39,17 +42,24 @@ Esta é uma documentação conscisa **simulando** fazer parte do banco de dados 
 
 |   |   |
 |:---:|:---|
-| **CATEGORIA** | Hardware e |
+| **CATEGORIA** | Hardware e Software |
 | **MODIFICADO EM** | 10/08/2026 por Breno Bergman (Nível 1) |
 | **CLASSIFICAÇÃO** | Desconheciso [(Nesse caso)] |
 | **SINTOMAS / DESCRIÇÃO DO PROBLEMA** | Notebook apenas inicia se estiver na tomada e é necessário toda vez alterar o modo de inicialização  para Legacy, caso contrário aparece erro de boot (`NO BOOTABLE DEVICE`). |
-| **AMBIENTE AFETADO** | Notebook com SO instalado em modo de inicialização diferente do padrão da configura na BIOS
+| **AMBIENTE AFETADO** | Notebook com sistema operacional instalado em modo de inicialização Legacy, com o modo de inicialização padrão do firmware sendo UEFI.
 | **CAUSA RAIZ** | Bateria principal no fim da vida útil, não retendo carga e não permitindo preservação das configurações da BIOS. |
 
 ```
-[SOLUÇÃO DEFINITIVA (Por)] 
+[SOLUÇÃO DEFINITIVA - Pelo MBR2GPT (Windows)] 
 
-1.
+1. Realizar BACKUP por prevenção
+2. Conferir se o formato de instalação é Legacy
+  2.1. Tecla Windows + R no teclado e digitar msinfo32
+  2.2. Conerir se em "Modo da BIOS" aparece "Herdado" (Legacy)
+3. Executar comandos via prompt de comando como administrador
+  3.1. Tecla Winsdow > digitar "prompt de comando" > botão direito
+  > Executar como administrador > Sim (Permitir que faça alterações no computador)
+  3.2 
 
 [Resultado] 
 
@@ -63,15 +73,15 @@ Caso de o usuário não se importe de usar conectado à energia e não se tenha 
 
 [Resultado] 
 
-Equipamento inicializando normalmente, mas soemente funcionando conectado à energia e com necessidade de intervir na inicialização toda vez que ficar desconectado. 
+Equipamento inicializando normalmente, mas soemente funcionando conectado à energia e com 
+necessidade de intervir na inicialização toda vez que ficar desconectado. 
 ```
 
 ```
 TAGS DE BUSCA: notebook, inicializacao, erro no bootable device, bateria, acer aspire e5573g
 CHAMADOS RELACIONADOS: #10492, #10521, #10603
 HISTÓRICO DE REVISÕES: 
-- 10/10/2025: Criado workaround por Ana Santos.
-- 14/10/2025: Adicionada a causa raiz e solução definitiva por Carlos Silva.
+- 15/08/2026: Adicionada solução definifinitiva por Breno Bergman
 ```
 
 Mas os passos para chegar a isso, são os descritos abaixo, que de fato foram usados para resolver este problema. 
@@ -170,11 +180,14 @@ Portanto, a causa provável foi definidad como:
 
 ### 🛡️ 1. Segurança e Preparação da Bancada
 
+> [!WARNING]
 > ### ⚠️ **Protocolo de Segurança Eletrostática (ESD):** 
 > Antes de qualquer intervenção interna na placa-mãe, o equipamento foi desenergizado via desconexão da **bateria principal** e remoção da **pilha CMOS** para zerar cargas residuais dos capacitores.
 
 * **Insumos Utilizados:** Álcool Isopropílico 99.8%, Pasta Térmica à base de Prata, Pincel Antiestático e Manta ESD.
 * **Ferramental:** Jogo de chaves de precisão PH0/PH00 e espátulas plásticas de náilon.
+
+> **💡 Dica de bancada:** Mantenha os parafusos organizados em um organizzador magnético para evitar perdas.
 
 
 <a id="observar-resultados-verificar"></a>

@@ -50,26 +50,49 @@ Esta é uma documentação conscisa **simulando** fazer parte do banco de dados 
 | **CAUSA RAIZ** | Bateria principal no fim da vida útil, não retendo carga e não permitindo preservação das configurações da BIOS. |
 
 ```
-[SOLUÇÃO DEFINITIVA - Pelo MBR2GPT (Windows)] 
+[SOLUÇÃO DEFINITIVA - Pelo MBR2GPT (Para não precisar alterar as configuraçõe toda vez que iniciar, mesmo com a bateria no fim da vida útil)] 
 
-1. Realizar BACKUP por prevenção
-2. Conferir se o formato de instalação é Legacy
-  2.1. Tecla Windows + R no teclado e digitar msinfo32
-  2.2. Conerir se em "Modo da BIOS" aparece "Herdado" (Legacy)
-3. Executar comandos via prompt de comando como administrador
-  3.1. Tecla Winsdow > digitar "prompt de comando" > botão direito
-  > Executar como administrador > Sim (Permitir que faça alterações no computador)
-  3.2 
+1. Confirmar que o equipamento possui suporte a UEFI, realizar backup dos dados importantes e verificar se o BitLocker está habilitado (Caso não seja o Windows Home). Caso esteja, garantir a disponibilidade da chave de recuperação e suspender temporariamente a proteção conforme a política da empresa.
+
+2. PowerShell como administrador e executar `Get-Disk` para identificar o disco que contém o sistema operacional e confirmar que seu estilo de partição está definido como MBR. Registrar o número do disco antes de prosseguir.
+
+3. Executar `mbr2gpt /validate /disk:0 /allowFullOS`, substituindo `0` pelo número correto do disco. Prosseguir somente se a validação for concluída com sucesso. Em caso de erro, analisar os logs e corrigir as incompatibilidades identificadas antes de continuar.
+
+4. Executar `mbr2gpt /convert /disk:0 /allowFullOS`. Aguardar a conclusão do processo e confirmar a mensagem de sucesso. Não interromper o procedimento durante a execução.
+
+5. Reiniciar o equipamento, acessar as configurações do BIOS/UEFI e alterar o modo de inicialização de Legacy/CSM para UEFI. Configurar o Windows Boot Manager como primeira opção de inicialização, quando aplicável.
+
+6. Executar `Get-Disk | Format-Table Number, PartitionStyle` no PowerShell para confirmar que o disco convertido está identificado como GPT. Verificar também se o sistema operacional inicia normalmente e se os recursos essenciais estão operacionais.
+
+7. Retomar a proteção do BitLocker, caso tenha sido suspensa, confirmar o funcionamento do equipamento com o usuário e registrar na ocorrência o número do disco convertido, o resultado da validação, a conclusão da conversão e os testes realizados.
 
 [Resultado] 
 
-Equipamento inicializando normalmente sem nenhuma necessidade de intervenção.
+Equipamento inicializando normalmente sem nenhuma necessidade de intervenção, mas se a bateria não for trocada permanece dependente de estar na tomada para funcionar.
+
+--------------------------------------------------------
+
+[Solução definitiva - Troca da bateria]
+
+1. Conferir e fazer backup de arquivos importantes para garantir (processo de desmontagem pode danificar).
+
+2. Preparar bancada para não riscar carcaça e lugares para armazenagem de parafusos.
+
+3. Retirar todos os parafusos se atentando para retirar os de baixo do leitor de CD.
+
+4. 
+
+[Resultado]
+
+Nenhuma intervenção necessária depois da primeira configuração e permanecendo assim até o fim da vida útil da bateria.
 
 ------------------------------------------------------
 
-[ SOLUÇÃO PALIATIVA (WORKAROUND - PARA ATENDIMENTO RÁPIDO) ]
-Caso de o usuário não se importe de usar conectado à energia e não se tenha o conhecimento:
-1. 
+[ SOLUÇÃO PALIATIVA (PARA ATENDIMENTO RÁPIDO) ]
+
+* Toda vez que inicializar terá de 
+
+1. Acessar as configurações do BIOS/UEFI 
 
 [Resultado] 
 
@@ -138,6 +161,14 @@ O problema principal que incomoda o usuário é a inicialização, que é nececs
 
 - Para inicializar o SO é alterado o modo de inicialização de UEFI (padrão da BIOS) para Legacy.
 
+> [!NOTE]
+> | MBR — Master Boot Record | GPT — GUID Partition Table |
+> | :--- | :--- |
+> | Tradicionalmente utilizado com BIOS Legacy. | Projetado para funcionar com UEFI. |
+> | Suporta até 4 partições primárias, sem considerar partições estendidas. | Suporta muitas partições, conforme o sistema operacional e a implementação. |
+> | Tem limite aproximado de 2 TB para discos com setores lógicos de 512 bytes. | Permite utilizar discos maiores que 2 TB. |
+> | Armazena informações de inicialização no início do disco. | Mantém cópias redundantes das estruturas de particionamento e mecanismos de verificação de integridade. |
+
 <a id="2-informacoes-detalhadas"></a>
 
 ## 2. Informações detalhadas 
@@ -198,6 +229,7 @@ Portanto, a causa provável foi definidad como:
 
 ## 7. O problema foi resolvido?
 
+> [!NOTE]
 >***Passo 8 é a própria documentação**
 
 ---

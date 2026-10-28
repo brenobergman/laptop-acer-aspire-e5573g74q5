@@ -36,7 +36,7 @@ Abaixo está o registro de intervenções técnicas organizadas por subpastas. C
 
 | ID | Incidente / Atendimento | Categoria | Status | Link da Documentação |
 | :---: | :--- | :--- | :---: | :---: |
-| **#01** | Falha de Inicialização, troca de bateria | Hardware e Software | 🟢 Concluído | [Acessar Relatório #01](./troubleshooting-01/README.md) |
+| **#01** | Falha de Inicialização, troca de bateria | Hardware e Software | 🟢 Concluído | [Acessar Relatório #01](./troubleshooting-01/troubleshooting-process.md) |
 
 ---
 

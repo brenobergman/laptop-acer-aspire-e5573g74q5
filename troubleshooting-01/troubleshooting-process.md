@@ -1,22 +1,25 @@
 <a id="topo"></a>
 # 🛠️ Incidente #01: Falha de Inicialização e problema de bateria
 
-### **Vídeo do procedimento**
+> [!IMPORTANT]
+> Escrita em andamento! Podem estar faltando partes ou a estrutura não estar adequada.
 
-[![YouTube](https://img.shields.io/badge/Assistir%20ao%20reparo-red?logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=jOHRt1e4rxw) ---> *Procedimento resumido + dicas de uso/manutenção.
+## **Vídeo do procedimento**
+
+> [!NOTE]
+>[![YouTube](https://img.shields.io/badge/Assistir%20ao%20reparo-red?logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=jOHRt1e4rxw) 
+>* Procedimento resumido + dicas de uso/manutenção.
+>* No vídeo o processo de resolução foi realizado apenas pela troca da bateria, o que é apenas uma parte da solução definitiva mas o incômodo é resolvido. 
 
 ---
 
-> [!NOTE]
-> Este procedimento está documentadao em duas versões:
->- **Base de Conhecimento:** mais concisa, simulando como seria se fosse um procedimento numa empresa de supporte, onde a documentação ficaria dispoível para consulta posterior. 
->- **Passos da resolução:** o procedimento seguido para o reparo no equipamento, seguindo o que fora recomendado no curso da Cisco Networking Academy: "It Costumer Support Basics.
+> [!IMPORTANT]
+> Essa documentação, **em específico**, está documentada a fim de mostrar o processo de resolução recomendado no curso da Cisco Networking Academy: "It Costumer Support Basics".
 
 ---
 
 ## 📍 Sumário
 
-* ### [Base de Conhecimento Técnica (Knowledge Base)](#base)
 * ### [Passos da resolução](#passos)
   * #### [1. Definição do problema](#1-definicao-problema)
   * #### [2. Informações detalhadas](#2-informacoes-detalhadas)
@@ -29,91 +32,9 @@
 
 ---
 
-<a id="base"></a>
-
-- ## **Base de Conhecimento Técnica (Knowledge Base)**
-
-Esta é uma documentação conscisa **simulando** fazer parte do banco de dados onde são armazenados os problemas conhecidos de uma empresa de suporte.
-
->**Algumas linhas são só para fins de simulação, como a _código do artigo_.**
-
-### **CÓDIGO DO ARTIGO:** XXXXX
-### **TÍTULO:** Falha de Inicialização e problema de bateria - com erro `NO BOOTABLE DEVICE`
-
-|   |   |
-|:---:|:---|
-| **CATEGORIA** | Hardware e Software |
-| **MODIFICADO EM** | 10/08/2026 por Breno Bergman (Nível 1) |
-| **CLASSIFICAÇÃO** | Desconheciso [(Nesse caso)] |
-| **SINTOMAS / DESCRIÇÃO DO PROBLEMA** | Notebook apenas inicia se estiver na tomada e é necessário toda vez alterar o modo de inicialização  para Legacy, caso contrário aparece erro de boot (`NO BOOTABLE DEVICE`). |
-| **AMBIENTE AFETADO** | Notebook com sistema operacional instalado em modo de inicialização Legacy, com o modo de inicialização padrão do firmware sendo UEFI.
-| **CAUSA RAIZ** | Bateria principal no fim da vida útil, não retendo carga e não permitindo preservação das configurações da BIOS. |
-
-```
-[SOLUÇÃO DEFINITIVA - Pelo MBR2GPT (Para não precisar alterar as configuraçõe toda vez que iniciar, mesmo com a bateria no fim da vida útil)] 
-
-1. Confirmar que o equipamento possui suporte a UEFI, realizar backup dos dados importantes e verificar se o BitLocker está habilitado (Caso não seja o Windows Home). Caso esteja, garantir a disponibilidade da chave de recuperação e suspender temporariamente a proteção conforme a política da empresa.
-
-2. PowerShell como administrador e executar `Get-Disk` para identificar o disco que contém o sistema operacional e confirmar que seu estilo de partição está definido como MBR. Registrar o número do disco antes de prosseguir.
-
-3. Executar `mbr2gpt /validate /disk:0 /allowFullOS`, substituindo `0` pelo número correto do disco. Prosseguir somente se a validação for concluída com sucesso. Em caso de erro, analisar os logs e corrigir as incompatibilidades identificadas antes de continuar.
-
-4. Executar `mbr2gpt /convert /disk:0 /allowFullOS`. Aguardar a conclusão do processo e confirmar a mensagem de sucesso. Não interromper o procedimento durante a execução.
-
-5. Reiniciar o equipamento, acessar as configurações do BIOS/UEFI e alterar o modo de inicialização de Legacy/CSM para UEFI. Configurar o Windows Boot Manager como primeira opção de inicialização, quando aplicável.
-
-6. Executar `Get-Disk | Format-Table Number, PartitionStyle` no PowerShell para confirmar que o disco convertido está identificado como GPT. Verificar também se o sistema operacional inicia normalmente e se os recursos essenciais estão operacionais.
-
-7. Retomar a proteção do BitLocker, caso tenha sido suspensa, confirmar o funcionamento do equipamento com o usuário e registrar na ocorrência o número do disco convertido, o resultado da validação, a conclusão da conversão e os testes realizados.
-
-[Resultado] 
-
-Equipamento inicializando normalmente sem nenhuma necessidade de intervenção, mas se a bateria não for trocada permanece dependente de estar na tomada para funcionar.
-
---------------------------------------------------------
-
-[Solução definitiva - Troca da bateria]
-
-1. Conferir e fazer backup de arquivos importantes para garantir (processo de desmontagem pode danificar).
-
-2. Preparar bancada para não riscar carcaça e lugares para armazenagem de parafusos.
-
-3. Retirar todos os parafusos se atentando para retirar os de baixo do leitor de CD.
-
-4. 
-
-[Resultado]
-
-Nenhuma intervenção necessária depois da primeira configuração e permanecendo assim até o fim da vida útil da bateria.
-
-------------------------------------------------------
-
-[ SOLUÇÃO PALIATIVA (PARA ATENDIMENTO RÁPIDO) ]
-
-* Toda vez que inicializar terá de 
-
-1. Acessar as configurações do BIOS/UEFI 
-
-[Resultado] 
-
-Equipamento inicializando normalmente, mas soemente funcionando conectado à energia e com 
-necessidade de intervir na inicialização toda vez que ficar desconectado. 
-```
-
-```
-TAGS DE BUSCA: notebook, inicializacao, erro no bootable device, bateria, acer aspire e5573g
-CHAMADOS RELACIONADOS: #10492, #10521, #10603
-HISTÓRICO DE REVISÕES: 
-- 15/08/2026: Adicionada solução definifinitiva por Breno Bergman
-```
-
-Mas os passos para chegar a isso, são os descritos abaixo, que de fato foram usados para resolver este problema. 
-
 <a id="passos"></a>
 
-- ## **Passos da resolução**
-
-
+- ## **Passos da Resolução**
 
 ```mermaid
 flowchart TD

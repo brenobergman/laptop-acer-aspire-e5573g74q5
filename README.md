@@ -4,7 +4,8 @@
 
 
 ## 📌 Visão Geral do Repositório
-Este repositório funciona como uma **Base de Conhecimento Técnica (Knowledge Base)** centrada na análise, diagnóstico e manutenção do notebook **Acer Aspire E 15 (E5-573G)**. 
+
+Este repositório funciona como uma **Base de Conhecimento Técnica (Knowledge Base)** centrada na análise, diagnóstico e manutenção do notebook **Acer Aspire E 15 (E5-573G-74Q5)**. 
 
 O objetivo principal é documentar a resolução de falhas de hardware, manutenção preventiva e upgrades de componentes utilizando uma metodologia estruturada de **isolamento de causas raízes**, servindo tanto como documentação de portfólio profissional quanto como guia de consulta pública.
 
@@ -36,7 +37,7 @@ Abaixo está o registro de intervenções técnicas organizadas por subpastas. C
 
 | ID | Incidente / Atendimento | Categoria | Status | Link da Documentação |
 | :---: | :--- | :--- | :---: | :---: |
-| **#01** | Falha de Inicialização, troca de bateria | Hardware e Software | 🟢 Concluído | [Acessar Relatório #01](./troubleshooting-01/troubleshooting-process.md) |
+| **#01** | Falha de Inicialização, troca de bateria | Hardware e Software | 🟢 Concluído | [*Processo de resolução](./troubleshooting-01/troubleshooting-process.md) // [KB #01](./troubleshooting-01/knowledge-base.md) |
 
 ---
 

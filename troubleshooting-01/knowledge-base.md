@@ -1,14 +1,15 @@
+<a id="topo"></a>
+# Base de Conhecimento Técnica (Knowledge Base) #01	Falha de Inicialização, troca de bateria
+
+### [➡️ Processo de Resolução](troubleshooting-process.md) 
+### [⬅️ Voltar ao Índice Geral do Repositório](../README.md) 
+
 > [!IMPORTANT]
 > Escrita em andamento! Podem estar faltando partes ou a estrutura não estar adequada.
 
-- ## **Base de Conhecimento Técnica (Knowledge Base)**
+Esta é a documentação que apresenta o incidente de uma forma conscisa para rápida consulta.
 
-Esta é uma documentação conscisa **simulando** fazer parte do banco de dados onde são armazenados os problemas conhecidos de uma empresa de suporte.
-
->[!IMPORTANT]
->**Algumas informações são fictícias para fins de simulação, como em `CÓDIGO DO ARTIGO`, `TAGS DE BUSCA` e `CHAMADOS RELACIONADOS`**
-
-### **CÓDIGO DO ARTIGO:** XXXXX
+### **CÓDIGO DO ARTIGO:** 01
 ### **TÍTULO:** Falha de Inicialização com erro `NO BOOTABLE DEVICE` e problema de bateria
 
 |   |   |
@@ -18,8 +19,8 @@ Esta é uma documentação conscisa **simulando** fazer parte do banco de dados 
 | **VERSÃO** | 1.1 |
 | **CRIADO EM** | 2026-07-17 |
 | **MODIFICADO EM** | 2026-10-20 |
-| **AUTOR** | Breno |
-| **RESPONSÁVEL PELA REVISÃO** | [Chefe do departamento] |
+| **AUTOR** | Breno Bergman |
+| **RESPONSÁVEL PELA REVISÃO** | Breno Bergman |
 | **NÍVEL DE SUPORTE** | Nível 1 / Nível 2 |
 | **CLASSIFICAÇÃO DO PROBLEMA** | Hardware e inicialização |
 | **SINTOMAS / DESCRIÇÃO DO PROBLEMA** | Notebook apenas inicia se estiver na tomada e é necessário toda vez alterar o modo de inicialização  para Legacy, caso contrário aparece erro de boot (`NO BOOTABLE DEVICE`). |
@@ -80,10 +81,11 @@ Equipamento inicializando normalmente sem nenhuma necessidade de intervenção e
 TAGS DE BUSCA: notebook, inicializacao, erro no bootable device, mbr, gpt, bateria, acer aspire e5573g
 CHAMADOS RELACIONADOS: #10492, #10521, #10603
 HISTÓRICO DE REVISÕES:
-- ... 
-- 2026-08-14: Adicionada solução definifinitiva por Breno Bergman
-- 2026-10-20: Atualizada solução definitiva por Breno Bergman
 ```
 
 >[!NOTE]
 >Mas os passos para chegar a esses dados são os descritos em **Passos da Resolução**, que de fato foram usados para resolver este problema. 
+
+### [⬆️ Voltar ao Topo](#topo) 
+### [➡️ Processo de Resolução](troubleshooting-process.md) 
+### [⬅️ Voltar ao Índice Geral do Repositório](../README.md) 

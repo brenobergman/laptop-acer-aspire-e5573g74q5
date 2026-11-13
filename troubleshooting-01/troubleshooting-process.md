@@ -1,6 +1,9 @@
 <a id="topo"></a>
 # 🛠️ Incidente #01: Falha de Inicialização e problema de bateria
 
+### [➡️ Base de Conhecimento Técnica](knowledge-base.md) 
+### [⬅️ Voltar ao Índice Geral do Repositório](../README.md) 
+
 > [!IMPORTANT]
 > Escrita em andamento! Podem estar faltando partes ou a estrutura não estar adequada.
 
@@ -14,7 +17,7 @@
 ---
 
 > [!IMPORTANT]
-> Essa documentação, **em específico**, está documentada a fim de mostrar o processo de resolução recomendado no curso da Cisco Networking Academy: "It Costumer Support Basics".
+> Essa documentação, foi incluída a este incidente, **em específico**, para mostrar o processo de resolução recomendado no curso da Cisco Networking Academy: "It Costumer Support Basics", que foi aplicado neste incidente e está resumido no vídeo.
 
 ---
 
@@ -36,6 +39,8 @@
 
 - ## **Passos da Resolução**
 
+Visualmente, o processo de resolução pode ser comprendido por meio do diagrama abaixo. O conceito mais importante do processo que é compreendido por essa visualização é quando se chega no passo 7, onde ocorre a **iteração** do processo enquanto este não é resolvido. Assim, justamente por essa iteração, o processo de resolução é compreendido como um **ciclo**. 
+
 ```mermaid
 flowchart TD
     P1["1. Definição do problema<br><i>(Identificar sintomas)</i>"] --> P2["2. Informações detalhadas<br><i>(Logs, testes, histórico)</i>"]
@@ -56,6 +61,8 @@ flowchart TD
 <a id="1-definicao-problema"></a>
 
 ## 1. Definição do problema 
+
+A etapa inicial foi  
 
 <figure>
   <img
@@ -96,7 +103,7 @@ O problema principal que incomoda o usuário é a inicialização, que é nececs
 
 Foi apurado se algo foi feito no dispositivo antes de começarem estes erros na inicialização, com fim de encontrar a causa, e descobriu-se que começou a aproximadamente três anos junto com desligamentos inesperados, pela porcentagem mostrada da bateria estar errada e que nos útimos tempos apareceram mais vezes o erro e, depois de fazer calibragens da bateria para correção da porcentagem, ela não carrega mais e o dispositivo não liga sem estar na tomada.
 
-Por estar relacionado à bateria, testou-se deixar conectado à tomada depois de feita a operação para contornar (troca de UEFI para Legacy) e ele consegue iniciar o SO normalmente, ou até se em pouco tempo desconectado. Mas se ficar muito tempo desconectado, retorna na mesma mensagem de “No Bootable Device”.
+Por estar relacionado à bateria, testou-se deixar conectado à tomada depois de feita a operação para contornar (troca de UEFI para Legacy) e ele consegue iniciar o SO normalmente, ou até se em pouco tempo desconectado. Mas se ficar muito tempo desconectado, retorna na mesma mensagem de “No Boostable Device”.
 
 Nos testes, acabou chegando no WinRE (Windows Recovery Environment - ambiente de recuperação oficial da Microsof), que inicia após três erros de inicialização. Foi tentado o reparo por software da inicialização e não resolveu.
 
@@ -191,6 +198,6 @@ Portanto, a causa provável foi definidad como:
 
 ---
 
-### [⬆️ Voltar ao Topo](#topo)
-
-### [⬅️ Voltar ao Índice Geral do Repositório](../README.md)
+### [⬆️ Voltar ao Topo](#topo) 
+### [➡️ Base de Conhecimento Técnica](knowledge-base.md) 
+### [⬅️ Voltar ao Índice Geral do Repositório](../README.md) 

@@ -5,7 +5,7 @@
 ### [⬅️ Voltar ao Índice Geral do Repositório](../README.md) 
 
 > [!IMPORTANT]
-> Escrita em andamento! Podem estar faltando partes ou a estrutura não estar adequada.
+>🚧  Escrita em andamento! Podem estar faltando partes ou a estrutura não estar adequada. 🚧 
 
 Esta é a documentação que apresenta o incidente de uma forma conscisa para rápida consulta.
 

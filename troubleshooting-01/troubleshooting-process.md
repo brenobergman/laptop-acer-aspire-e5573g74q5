@@ -5,7 +5,7 @@
 ### [⬅️ Voltar ao Índice Geral do Repositório](../README.md) 
 
 > [!IMPORTANT]
-> Escrita em andamento! Podem estar faltando partes ou a estrutura não estar adequada.
+>🚧  Escrita em andamento! Podem estar faltando partes ou a estrutura não estar adequada. 🚧 
 
 ## **Vídeo do procedimento**
 
@@ -37,9 +37,9 @@
 
 <a id="passos"></a>
 
-- ## **Passos da Resolução**
+## **Passos da Resolução**
 
-Visualmente, o processo de resolução pode ser comprendido por meio do diagrama abaixo. O conceito mais importante do processo que é compreendido por essa visualização é quando se chega no passo 7, onde ocorre a **iteração** do processo enquanto este não é resolvido. Assim, justamente por essa iteração, o processo de resolução é compreendido como um **ciclo**. 
+Visualmente, o processo de resolução pode ser compreendido por meio do diagrama abaixo. O conceito mais importante do processo que fica visível com essa visualização é o passo 7, onde ocorre a **iteração** do processo enquanto este não é resolvido. Assim, justamente por isso, o processo de resolução é compreendido como um **ciclo**. 
 
 ```mermaid
 flowchart TD
@@ -62,7 +62,7 @@ flowchart TD
 
 ## 1. Definição do problema 
 
-A etapa inicial foi  
+Na etapa inicial o problema deve ser definido claramente por seus sintomas e onde de fato ocorre. Isso a fim de definir o **escopo** e se concentrar em onde realmente uma alteração fará efeito.
 
 <figure>
   <img
@@ -73,7 +73,7 @@ A etapa inicial foi
   <figcaption>Figura 1 — O erro ao inicializar.</figcaption>
 </figure>
 
-O problema principal que incomoda o usuário é a inicialização, que é nececssário intervir a cada vez que vai ligar. Em segundo plano a questão da bateria não reter carga, que já vinha a um tempo assim.
+O problema principal que incomoda o usuário é a inicialização. O usuário liga o notebook, ele liga a tela, o cooler e a luz de energia, e então desliga tudo de novo; isso duas ou três vezes. Então na próxima vez que isso ocorre aparece o logo da Acer (Post) e logo após o aviso `NO BOOTABLE DEVICE`. O que o usuário fazia para contornar isso era alterar de UEFI para Legacy o modo de inicialização na BIOS, cada vez que fica um tempo longe a tomada. Isso por conta da questão da bateria não reter carga, que já vinha um tempo assim; a bateria é original e de 2015, então o usuário já sabia que precisaria trocar. Mas como o notebook ainda estava funcionando mesmo com a bateria ruim (como um desktop) ele a deixou assim, mas o que realmente incomodava era a questão de ter que intervir a cada inicialização.
 
 ### Problema:
 
@@ -85,11 +85,22 @@ O problema principal que incomoda o usuário é a inicialização, que é nececs
 
 - Mesmo carregando por horas a bateria não muda de 0%;  
 
-- Depois de até três tentativas ele inicializa, aparece a logo da Acer, mas logo aparece "No Bootable Device";
+- Depois de até três tentativas ele inicializa, aparece a logo da Acer, mas logo aparece `No Bootable Device`;
 
-- Para inicializar o SO é alterado o modo de inicialização de UEFI (padrão da BIOS) para Legacy.
+- Para inicializar é alterado o modo de inicialização de UEFI (padrão da BIOS) para Legacy.
 
 > [!NOTE]
+>
+> ## Por que não inicializa no modo de inicialização UEFI, padrão do firmware?
+>
+> Cada modo utiliza um mecanismo diferente para localizar e executar os arquivos de inicialização nos dispositivos conectados, como HDDs, SSDs e pendrives. No caso, o sistema operacional havia sido instalado em um disco com particionamento MBR, utilizando o modo Legacy. Nesse modo, a inicialização ocorre por meio do código de boot localizado no MBR do disco.
+>
+>Já no modo UEFI, o firmware procura um carregador de inicialização no formato EFI (`.efi`), normalmente armazenado em uma partição específica chamada EFI System Partition (ESP), geralmente formatada em FAT32. Em instalações convencionais do Windows, essa configuração exige que o disco do sistema utilize o particionamento GPT.
+>
+>Portanto, como o sistema havia sido instalado em MBR no modo Legacy, ele não possuía a estrutura de inicialização UEFI necessária para iniciar diretamente nesse modo. Para inicializá-lo, seria necessário utilizar o modo Legacy (ou CSM, caso disponível) ou converter o disco para GPT e configurar os arquivos de inicialização UEFI.
+>
+> Tabela compativa entre os formatos de particionamento MBR e GPT:
+>
 > | MBR — Master Boot Record | GPT — GUID Partition Table |
 > | :--- | :--- |
 > | Tradicionalmente utilizado com BIOS Legacy. | Projetado para funcionar com UEFI. |
@@ -101,7 +112,9 @@ O problema principal que incomoda o usuário é a inicialização, que é nececs
 
 ## 2. Informações detalhadas 
 
-Foi apurado se algo foi feito no dispositivo antes de começarem estes erros na inicialização, com fim de encontrar a causa, e descobriu-se que começou a aproximadamente três anos junto com desligamentos inesperados, pela porcentagem mostrada da bateria estar errada e que nos útimos tempos apareceram mais vezes o erro e, depois de fazer calibragens da bateria para correção da porcentagem, ela não carrega mais e o dispositivo não liga sem estar na tomada.
+Nessa etapa, mais informações são buscadas com base no problema definido. Ou seja, enquanto na etapa anterior era buscado O QUE ERA, agora se busca: "Desde quando isso ocorre", "algo que foi alterado antes do funcionamento normal", etc. Com estas informações o que se tinha do problema deixa apenas de ser uma definição dele para uma descrição mais completa dele, de seu "entorno" e de seu histórico.
+
+Foi apurado se algo foi feito no dispositivo antes de começarem estes erros na inicialização, com fim de encontrar a causa, e descobriu-se que começou a aproximadamente três anos junto com desligamentos inesperados, pela porcentagem mostrada da bateria estar errada. E nos útimos tempos apareceram mais vezes o erro e, depois de fazer calibragens da bateria para correção da porcentagem, ela não carrega mais e o dispositivo não liga sem estar na tomada.
 
 Por estar relacionado à bateria, testou-se deixar conectado à tomada depois de feita a operação para contornar (troca de UEFI para Legacy) e ele consegue iniciar o SO normalmente, ou até se em pouco tempo desconectado. Mas se ficar muito tempo desconectado, retorna na mesma mensagem de “No Boostable Device”.
 

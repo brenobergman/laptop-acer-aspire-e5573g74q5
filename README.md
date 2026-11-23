@@ -5,7 +5,7 @@
 
 ## 📌 Visão Geral do Repositório
 
-Este repositório funciona como uma **Base de Conhecimento Técnica (Knowledge Base)** centrada na análise, diagnóstico e manutenção do notebook **Acer Aspire E 15 (E5-573G-74Q5)**. 
+Este repositório funciona como uma **Base de Conhecimento Técnica (Knowledge Base)** centrada na análise, diagnóstico e manutenção do notebook **Acer Aspire E 15 (E5-573G-74Q5)**. Portanto, conterá apenas incidentes deste equipamento em específico.
 
 O objetivo principal é documentar a resolução de falhas de hardware, manutenção preventiva e upgrades de componentes utilizando uma metodologia estruturada de **isolamento de causas raízes**, servindo tanto como documentação de portfólio profissional quanto como guia de consulta pública.
 

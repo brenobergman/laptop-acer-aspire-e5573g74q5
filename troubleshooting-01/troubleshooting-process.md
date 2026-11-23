@@ -12,7 +12,6 @@
 > [!NOTE]
 >[![YouTube](https://img.shields.io/badge/Assistir%20ao%20reparo-red?logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=jOHRt1e4rxw) 
 >* Procedimento resumido + dicas de uso/manutenção.
->* No vídeo o processo de resolução foi realizado apenas pela troca da bateria, o que é apenas uma parte da solução definitiva mas o incômodo é resolvido. 
 
 ---
 
@@ -62,7 +61,7 @@ flowchart TD
 
 ## 1. Definição do problema 
 
-Na etapa inicial o problema deve ser definido claramente por seus sintomas e onde de fato ocorre. Isso a fim de definir o **escopo** e se concentrar em onde realmente uma alteração fará efeito.
+Na etapa inicial o problema deve ser definido claramente por seus sintomas e onde de fato ocorre. Isso a fim de definir o **escopo** e se concentrar em onde realmente uma alteração fará efeito, para uma resolução rápida.
 
 <figure>
   <img
@@ -70,10 +69,13 @@ Na etapa inicial o problema deve ser definido claramente por seus sintomas e ond
     alt="Erro da inicialização"
     width="500"
   >
-  <figcaption>Figura 1 — O erro ao inicializar.</figcaption>
+  <figcaption>Figura 1 — Erro "No Bootable Device" ao inicializar.</figcaption>
 </figure>
 
-O problema principal que incomoda o usuário é a inicialização. O usuário liga o notebook, ele liga a tela, o cooler e a luz de energia, e então desliga tudo de novo; isso duas ou três vezes. Então na próxima vez que isso ocorre aparece o logo da Acer (Post) e logo após o aviso `NO BOOTABLE DEVICE`. O que o usuário fazia para contornar isso era alterar de UEFI para Legacy o modo de inicialização na BIOS, cada vez que fica um tempo longe a tomada. Isso por conta da questão da bateria não reter carga, que já vinha um tempo assim; a bateria é original e de 2015, então o usuário já sabia que precisaria trocar. Mas como o notebook ainda estava funcionando mesmo com a bateria ruim (como um desktop) ele a deixou assim, mas o que realmente incomodava era a questão de ter que intervir a cada inicialização.
+
+O problema principal que incomoda o usuário é a inicialização, que ele tem que intervir na maioria das vezes para iniciar. Ele liga o notebook, a tela liga junto com o cooler e a luz de energia, e então desliga tudo; isso duas ou três vezes. Então, na próxima vez que isso ocorre aparece o logo da Acer (Post) e logo após o aviso `NO BOOTABLE DEVICE`. O que o usuário faz para contornar isso é alterar o modo de inicialização de UEFI (padrão do firmware) para Legacy, na BIOS, na maior parte das inicializações. Mas há também a questão da bateria não reter carga, que já vinha um tempo assim; a bateria é original e de 2015, então o usuário já sabia que precisaria trocar, no entanto, como o notebook ainda estava funcionando mesmo com a bateria ruim (como um desktop) ele a deixou assim, mas o que realmente incomodava era a questão de ter que intervir a cada inicialização.
+
+Portanto, são dois problemas, um de inicialização e outro de bateria, que pode estar relacionado. Por isso é importante adquirir mais detalhes com o passo 2.
 
 ### Problema:
 
@@ -81,17 +83,14 @@ O problema principal que incomoda o usuário é a inicialização. O usuário li
 
 ### Sintomas:  
 
-- Não liga sem estar conectado na tomada;
-
-- Mesmo carregando por horas a bateria não muda de 0%;  
-
-- Depois de até três tentativas ele inicializa, aparece a logo da Acer, mas logo aparece `No Bootable Device`;
-
+- Não liga sem estar conectado na tomada.
+- Mesmo carregando por horas a bateria não muda de 0%.
+- Depois de até três tentativas ele inicializa, aparece a logo da Acer, mas logo aparece `No Bootable Device`.
 - Para inicializar é alterado o modo de inicialização de UEFI (padrão da BIOS) para Legacy.
 
 > [!NOTE]
 >
-> ## Por que não inicializa no modo de inicialização UEFI, padrão do firmware?
+> ## Por que não inicializa no modo de inicialização UEFI, padrão do firmware nesse caso?
 >
 > Cada modo utiliza um mecanismo diferente para localizar e executar os arquivos de inicialização nos dispositivos conectados, como HDDs, SSDs e pendrives. No caso, o sistema operacional havia sido instalado em um disco com particionamento MBR, utilizando o modo Legacy. Nesse modo, a inicialização ocorre por meio do código de boot localizado no MBR do disco.
 >
@@ -99,7 +98,7 @@ O problema principal que incomoda o usuário é a inicialização. O usuário li
 >
 >Portanto, como o sistema havia sido instalado em MBR no modo Legacy, ele não possuía a estrutura de inicialização UEFI necessária para iniciar diretamente nesse modo. Para inicializá-lo, seria necessário utilizar o modo Legacy (ou CSM, caso disponível) ou converter o disco para GPT e configurar os arquivos de inicialização UEFI.
 >
-> Tabela compativa entre os formatos de particionamento MBR e GPT:
+> Tabela comparativa entre os formatos de particionamento MBR e GPT:
 >
 > | MBR — Master Boot Record | GPT — GUID Partition Table |
 > | :--- | :--- |
@@ -112,43 +111,64 @@ O problema principal que incomoda o usuário é a inicialização. O usuário li
 
 ## 2. Informações detalhadas 
 
-Nessa etapa, mais informações são buscadas com base no problema definido. Ou seja, enquanto na etapa anterior era buscado O QUE ERA, agora se busca: "Desde quando isso ocorre", "algo que foi alterado antes do funcionamento normal", etc. Com estas informações o que se tinha do problema deixa apenas de ser uma definição dele para uma descrição mais completa dele, de seu "entorno" e de seu histórico.
+Nessa etapa, mais informações são buscadas com base no problema definido. Ou seja, enquanto na etapa anterior era buscado O QUE ERA, agora se busca: "Desde quando isso ocorre", "algo que foi alterado antes do funcionamento normal", etc. Com estas informações o que se tinha do problema deixa apenas de ser uma definição dele para uma descrição mais completa dele, de seu "entorno" e de seu histórico. Essas informações a mais ajudar a dar pistas sobre a provável causa.
 
-Foi apurado se algo foi feito no dispositivo antes de começarem estes erros na inicialização, com fim de encontrar a causa, e descobriu-se que começou a aproximadamente três anos junto com desligamentos inesperados, pela porcentagem mostrada da bateria estar errada. E nos útimos tempos apareceram mais vezes o erro e, depois de fazer calibragens da bateria para correção da porcentagem, ela não carrega mais e o dispositivo não liga sem estar na tomada.
+Foi apurado se algo foi feito no dispositivo antes de começarem esses erros na inicialização, porque isso pode ser decorrente de alguma má configuração que o usuário fez ou por outros erros. E descobriu-se que começou a aproximadamente três anos em paralelo com desligamentos inesperados, pela porcentagem mostrada da bateria estar errada. Ademais, nos últimos tempos apareceram mais vezes o erro e, posteriormente a uma calibragem da bateria para correção da porcentagem, ela já não carregava mais e o dispositivo não ligava sem estar na tomada.
 
-Por estar relacionado à bateria, testou-se deixar conectado à tomada depois de feita a operação para contornar (troca de UEFI para Legacy) e ele consegue iniciar o SO normalmente, ou até se em pouco tempo desconectado. Mas se ficar muito tempo desconectado, retorna na mesma mensagem de “No Boostable Device”.
+Então, principalmente pelo fato de a inicialização apresentar mais o erro em sequência de um procedimento que acarretou também com perda da capacidade da bateria armazenar a carga, então este é um detalhe que indica a bateria como uma causa. Ou seja, esse processo levou a uma pista importante.
 
-Nos testes, acabou chegando no WinRE (Windows Recovery Environment - ambiente de recuperação oficial da Microsof), que inicia após três erros de inicialização. Foi tentado o reparo por software da inicialização e não resolveu.
+### Detalhes:
 
-Ademais enquanto carrega, a luz indicadora de carregamento pisca a cada vinte segundos.
+- Porcentagem da bateria estava indicando errada.
+- Foi feita uma calibração da bateria e então ela não reteve mais carga, notebook ficou dependente de estar na tomada após isso.
+- Problema da inicialização predominou, também depois da calibragem da bateria.
 
 <a id="identificacao-da-provavel-causa"></a>
 
 ## 3. Identificação da provável causa 
 
-A partir do que foi exposto do caso 
+Aqui é feita uma lista das causas possíveis, da mais simples e fácil a mais complexa e difícil de lidar. E uma delas é selecionada para seguir com o próximo passo, começando pelo início da lista. A hipótese da lista abaixo que foi selecionada para andamento do processo foi a que está em destaque.
 
-Como a bateria estava relacionada, os testes são direcionados a ela. Geralmente se começa da 
+Aqui
 
-#### **🔍 Matriz de Testes**
+Diante do que foi obtido da etapa anterior, e o fato de a bateria ter relação no problema, ela aparece em todas as hipóteses. Além disso, visto que é necessária intervenção do usuário na BIOS muitas vezes, a bateria CMOS que desempenha um papel de garantir que tais configurações não sejam perdidas pode também ter sido desgastada junto. Já que possivelmente o circuito ficou só dependente dela com a falta da contribuição da principal. Ou seja, ela acabou forçando com o tempo e degradou.
 
-| Componente Analisado | Hipótese do Problema | Teste/Procedimento Executado | Resultado do Teste | Status |
-| :--- | :--- | :--- | :--- | :---: |
-| **Memória RAM** | Mau contato / Falha de módulo | Limpeza dos contatos e teste individual dos pentes em bancada | Memórias validadas e funcionais | 🟢 OK |
-| **Tela / Display** | Defeito no painel LCD | Conexão de vídeo externo via porta HDMI | Vídeo gerado no monitor externo | 🟢 OK |
-| **Cabo Flat (eDP)** | Rompimento ou conector solto | Inspeção de continuidade e verificação de encaixe lógico | Trava solta e oxidação leve | 🔴 Falha |
+Contudo, pode ser outra a causa, por isso o carregador foi listado, porque se ele estiver com falha, logicamente a bateria não irá ser carregada. No entanto, em ambas as hipóteses apesar de não se ter mais certeza de estar no fim da vida útil, a CMOS entra na lista por ser algo comum de degradar com o tempo.
+ 
+### Provável causa:
 
-Portanto, a causa provável foi definidad como: 
-
->### **Bateria principal do notebook no fim da vida útil alterando para o modo padrão de inicialização diferente do que o sistema operacional foi instalado.**
+1. >**Bateria principal e bateria CMOS do notebook no fim da vida útil**
+2. Carregador do notebook não carregando a bateria principal e bateria CMOS no fim da vida útil.
 
 <a id="plano-para-a-solucao"></a>
 
 ## 4. Plano para a resolução 
 
+Agora, com o escopo do que tem que ser resolvido, com as pistas do que pode ser, é o momento de ter um roteiro de como trabalhar na resolução para que esta tenha êxito. Logo, um plano para como resolver é traçado a partir de uma hipótese do passo 3. Observe, abaixo que ele pode ter alternativas dentro dele mesmo caso algo dê errado na própria hipótese selecionada.
+
+Para este problema e para muitos, é bom começar com o menos invasivo, para não correr o risco com alternativas que exigem desmontagem do equipamento. Então como pode ser visto para matriz
+
+### Plano caso seja a bateria principal e a bateria CMOS
+
+1. Checar se liga depois de configurar a BIOS, desligar e manter na tomada.
+2. 
+
+#### **🔍 Matriz de Testes**
+
+| Componente Analisado | Hipótese do Problema | Teste/Procedimento Executado | Resultado do Teste | Status |
+| :--- | :--- | :--- | :--- | :---: |
+| **Carregador** | Mau contato / Falha de módulo | Limpeza dos contatos e teste individual dos pentes em bancada | Memórias validadas e funcionais | 🟢 OK |
+| **Tela / Display** | Defeito no painel LCD | Conexão de vídeo externo via porta HDMI | Vídeo gerado no monitor externo | 🟢 OK |
+| **Cabo Flat (eDP)** | Rompimento ou conector solto | Inspeção de continuidade e verificação de encaixe lógico | Trava solta e oxidação leve | 🔴 Falha |
+
+
 <a id="implementar-plano"></a>
 
 ## 5. Implementar o plano 
+
+Por estar relacionado à bateria, testou-se deixar conectado à tomada após a operação para contornar (troca de UEFI para Legacy) e ele consegue iniciar o SO normalmente, ou até se em pouco tempo desconectado. Mas se ficar muito tempo desconectado, retorna na mesma mensagem de `No Bootable Device`.
+
+Ademais enquanto carrega, a luz indicadora de carregamento pisca a cada vinte segundos. Isso pr
 
 ### 🛡️ 1. Segurança e Preparação da Bancada
 

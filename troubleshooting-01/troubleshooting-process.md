@@ -63,18 +63,41 @@ flowchart TD
 
 Na etapa inicial o problema deve ser definido claramente por seus sintomas e onde de fato ocorre. Isso a fim de definir o **escopo** e se concentrar em onde realmente uma alteração fará efeito, para uma resolução rápida.
 
+O problema principal que incomoda o usuário é a inicialização, que ele tem que intervir na maioria das vezes para iniciar. Ele liga o notebook, a tela liga junto com o cooler e a luz de energia, e então desliga tudo; isso duas ou três vezes. Então, na próxima vez que isso ocorre aparece o logo da Acer (Post) e logo após o aviso `NO BOOTABLE DEVICE`. O que o usuário faz para contornar isso é alterar o modo de inicialização de UEFI (padrão do firmware) para Legacy, na BIOS, na maior parte das inicializações. 
+
 <div align="center">
+  <br />
   <img
-    src="images/02-erro-inicializacao.png"
+    src="images/01-erro-inicializacao.png"
     alt="Tela com o erro da inicialização: 'No Bootable Device'"
     width="500"
   />
   <br />
-  <sub>Figura 1 — Erro "No Bootable Device" ao inicializar.</sub>
+  <sub>Imagem 1 — Erro "No Bootable Device" ao inicializar.</sub>
+  <br /><br /><br />
+  <img
+    src="images/02-mudança-de-boot.png"
+    alt="Tela da BIOS alterando o modo de inicialização de UEFI para Legacy"
+    width="500"
+  />
+  <br />
+  <sub>Imagem 2 — Alterando o modo de inicialização na BIOS, de UEFI para Legacy</sub>
   <p>&nbsp;</p>
 </div>
 
-O problema principal que incomoda o usuário é a inicialização, que ele tem que intervir na maioria das vezes para iniciar. Ele liga o notebook, a tela liga junto com o cooler e a luz de energia, e então desliga tudo; isso duas ou três vezes. Então, na próxima vez que isso ocorre aparece o logo da Acer (Post) e logo após o aviso `NO BOOTABLE DEVICE`. O que o usuário faz para contornar isso é alterar o modo de inicialização de UEFI (padrão do firmware) para Legacy, na BIOS, na maior parte das inicializações. Mas há também a questão da bateria não reter carga, que já vinha um tempo assim; a bateria é original e de 2015, então o usuário já sabia que precisaria trocar, no entanto, como o notebook ainda estava funcionando mesmo com a bateria ruim (como um desktop) ele a deixou assim, mas o que realmente incomodava era a questão de ter que intervir a cada inicialização.
+Mas há também a questão da bateria não reter carga, que já vinha um tempo assim; a bateria é original e de 2015, então o usuário já sabia que precisaria trocar, no entanto, como o notebook ainda estava funcionando mesmo com a bateria ruim (como um desktop) ele a deixou assim, mas o que realmente incomodava era a questão de ter que intervir a cada inicialização.
+
+<div align="center">
+  <br />
+  <img
+    src="images/03-porcentagem-bat.png"
+    alt="Porcentagem em 0% informada pelo sistema operacional"
+    width="500"
+  />
+  <br />
+  <sub>Imagem 3 — A porcentagem informada pelo sistema operacional permanece em 0%.</sub>
+  <p>&nbsp;</p>
+</div>
 
 Portanto, são dois problemas, um de inicialização e outro de bateria, que pode estar relacionado. Por isso é importante adquirir mais detalhes com o passo 2.
 
@@ -110,11 +133,27 @@ Portanto, são dois problemas, um de inicialização e outro de bateria, que pod
 
 <a id="2-informacoes-detalhadas"></a>
 
-## 2. Informações detalhadas 
+## 2. Informações detalhadas
 
 Nessa etapa, mais informações são buscadas com base no problema definido. Ou seja, enquanto na etapa anterior era buscado O QUE ERA, agora se busca: "Desde quando isso ocorre", "algo que foi alterado antes do funcionamento normal", etc. Com estas informações o que se tinha do problema deixa apenas de ser uma definição dele para uma descrição mais completa dele, de seu "entorno" e de seu histórico. Essas informações a mais ajudar a dar pistas sobre a provável causa.
 
 Foi apurado se algo foi feito no dispositivo antes de começarem esses erros na inicialização, porque isso pode ser decorrente de alguma má configuração que o usuário fez ou por outros erros. E descobriu-se que começou a aproximadamente três anos em paralelo com desligamentos inesperados, pela porcentagem mostrada da bateria estar errada. Ademais, nos últimos tempos apareceram mais vezes o erro e, posteriormente a uma calibragem da bateria para correção da porcentagem, ela já não carregava mais e o dispositivo não ligava sem estar na tomada.
+
+<!-- FIXME: continuar aqui - Acrescentando procedimento de teste inicial de preservação da configuração da BIOS conectado à tomada. -->
+
+Um pequeno teste rápido realizado para coletar mais informações desse problema, pela informação anterior indicar que apareceu junto com a degradação da bateria, foi o de realizar a configuração da BIOS e então verificar se eram mantidas as configurações pela energia, da tomada. e 
+
+<div align="center">
+  <br />
+  <img
+    src="images/04-na-energia.png"
+    alt="Notebook ligando normalmente se deixado conectado à energia"
+    width="500"
+  />
+  <br />
+  <sub>Imagem 4 — Inicialização normal pela preservação das configurações pela energia da tomada.</sub>
+  <p>&nbsp;</p>
+</div>
 
 Então, principalmente pelo fato de a inicialização apresentar mais o erro em sequência de um procedimento que acarretou também com perda da capacidade da bateria armazenar a carga, então este é um detalhe que indica a bateria como uma causa. Ou seja, esse processo levou a uma pista importante.
 
@@ -123,26 +162,78 @@ Então, principalmente pelo fato de a inicialização apresentar mais o erro em 
 - Porcentagem da bateria estava indicando errada.
 - Foi feita uma calibração da bateria e então ela não reteve mais carga, notebook ficou dependente de estar na tomada após isso.
 - Problema da inicialização predominou, também depois da calibragem da bateria.
+- Se conectado à energia, despois de desligado, permanecem as configurações na próxima inicialização.
 
 <a id="identificacao-da-provavel-causa"></a>
 
 ## 3. Identificação da provável causa 
 
-Aqui é feita uma lista das causas possíveis, da mais simples e fácil a mais complexa e difícil de lidar. E uma delas é selecionada para seguir com o próximo passo, começando pelo início da lista. A hipótese da lista abaixo que foi selecionada para andamento do processo foi a que está em destaque.
+Aqui é feita uma lista das causas possíveis, da mais simples e fácil a mais complexa e difícil de lidar. E uma delas é selecionada para seguir com o próximo passo, começando pelo início da lista. As causas menos prováveis devem ser descartadas justamente pelo que é apurado das informações se obteve até agora, isso já é o filtro do **isolamento de causas**.
 
-As causas menos prováveis devem ser descartadas justamente pelo que é apurado das informações se obteve até agora, isso já é o filtro do **isolamento de causas**.
-
-Também pode, para se ter mais certeza ou facilidade na resolução, fazer pesquisa sobre o problema com as informações que se tem. Várias formas podem ser utilizadas como fonte, entre elas: IA (consciente de que ela pode errar), fóruns online, base de conhecimento, artigos de sites.
+Há a opção, para se ter mais certeza ou facilidade na resolução, de fazer pesquisa sobre o problema com as informações que se tem. Várias formas podem ser utilizadas como fonte, entre elas: IA (consciente de que ela pode errar), fóruns online, base de conhecimento, artigos de sites.
 
 Neste problema, foi tentado obter ajuda dos artigos do suporte oficial da Acer, porque pode ter algo em específico que a empresa que produz o notebook pode trazer de informação, como ela é a detentora de todas as informações sobre ele. No entanto, consultando pelo SN (Serial Number), foi descoberto que já não constam informações sobre, porque é um dispositivo antigo e é comum das empresas descontinuarem a disposição das informações. Mas pela palavra-chave "No Bootable Device" na pesquisa geral pelos artigos foi encontrado um conteúdo, dentre muitos, relacionado com o problema que apenas falava sobre a alteração na BIOS do modo de inicialização. 
 
+<div align="center">
+  <br />
+  <img
+    src="images/05-suporte-acer.png"
+    alt="Site de suporte da aacer aplicada a pesquisa com a palavra-chave 'nenhum dispositivo inicializáel'"
+    width="500"
+  />
+  <br />
+  <sub>Imagem 5 — Suporte da acer (https://www.acer.com/br-pt/search/search-support?search=nenhum%20dispositivo%20inicializ%C3%A1vel) após aplicar a pesquisa por palavra-chave.</sub>
+  <p>&nbsp;</p>
+</div>
+
 Partiu-se para uma busca geral pelo navegador por `"E5-573G-74Q5" "no bootable device"`, porque utilizando o mecanismo de busca Google isso filtra a busca por exatamente estas palavras no conteúdo web, pelo uso dos operadores aspas. Unindo esses dois o conteúdo focará no modelo exato do notebook e na mensagem exata do erro. Mesmo valendo-se dessa técnica de pesquisa avançada os conteúdos que pareceram eram genéricos, sem especificidade com o problema enfrentado.
 
-Agora, para fim de confirmar de forma mais rápida se de fato a bateria poderia estar relacionada e seguir em frente com o processo, como última alternativa às pesquisas malsucedidas, foi feito um prompt para a inteligência artificial Gemini, do Google, com todos os sintomas e detalhes. As partes principais de seu retorno foram o que está apresentado
+<div align="center">
+  <br />
+  <img
+    src="images/06-pesquisa-avancada.png"
+    alt="Instruções que o Google fornece para pesquisa avançada, usando operadores"
+    width="500"
+  />
+  <br />
+  <sub>Imagem 6 — Intruções para pesquisa avançada com operadores fornecida do mecanismo de pesquisa Google (https://support.google.com/websearch/answer/2466433).</sub>
+  <p>&nbsp;</p>
+</div>
 
-Diante do que foi obtido da etapa anterior, e o fato de a bateria ter relação no problema, ela aparece em todas as hipóteses. Além disso, visto que é necessária intervenção do usuário na BIOS muitas vezes, a bateria CMOS que desempenha um papel de garantir que tais configurações não sejam perdidas pode também ter sido desgastada junto. Já que possivelmente o circuito ficou só dependente dela com a falta da contribuição da principal. Ou seja, ela acabou forçando com o tempo e degradou.
+Agora, para fim de confirmar de forma mais rápida se de fato a bateria poderia estar relacionada e seguir em frente com o processo, como última alternativa às pesquisas malsucedidas, foi feito um prompt simples para a inteligência artificial Gemini, do Google, com a visão geral do problema. Porque com os dados que se tinha até então e por ter maior certeza de serem as baterias, a resposta da IA poderia ser mais um indicativo, caso confirmasse, ou traria outra observação que não foi percebida até então. isso considerando um retorno com menos erro possível, mas caso fosse algo muito discrepante seria rapidamente percebido pelo que foi estudado do problema. Em outras palavras, independente do retorno que o modelo fornecesse, seria uma tentativa a mais de pesquisa. O prompt utilizado e as partes principais de seu retorno estão apresentados nas imagens abaixo.
 
-Contudo, pode ser outra a causa, por isso o carregador foi listado, porque se ele estiver com falha, logicamente a bateria não irá ser carregada. No entanto, em ambas as hipóteses apesar de não se ter mais certeza de estar no fim da vida útil, a CMOS entra na lista por ser algo comum de degradar com o tempo.
+<div align="center">
+  <img
+    src="images/07-prompt-gemini.png"
+    alt="Prompt utilizado no Gemini descrevendo o problema."
+    width="400"
+  />
+  <br />
+  <sub>Imagem 7 — Prompt feito para a inteligência artificial Gemini.</sub>
+  <br /><br /><br />
+  <img
+    src="images/08-1resultado-gemini.png"
+    alt="IA explicando que o problema pode ser decorrente da bateria principal e CMOS"
+    width="500"
+  />
+  <br />
+  <sub>Imagem 8 — Parte 1 da resposta da IA.</sub>
+  <br /><br /><br />
+  <img
+    src="images/09-2resultado-gemini.png"
+    alt="IA explicando os modos de inicialização, o fato de não inicializar no padrão do firware e o fato de a porcentagem da bateria não alterar de 0%"
+    width="500"
+  />
+  <br />
+  <sub>Imagem 9 — Parte 2 da resposta da IA.</sub>
+  <p>&nbsp;</p>
+</div>
+
+Diante do que foi obtido e o fato de a bateria ter relação no problema, ela aparece em todas as hipóteses. Além disso, visto que é necessária intervenção do usuário na BIOS muitas vezes, a bateria CMOS que desempenha um papel de garantir que tais configurações não sejam perdidas pode também ter sido desgastada junto, como apontado pela IA. Já que possivelmente o circuito ficou só dependente dela com a falta da contribuição da principal. Ou seja, ela acabou forçando com o tempo e degradou.
+
+Contudo, pode ser outra a causa, por isso o carregador foi listado, porque se ele estiver com falha, logicamente a bateria não irá ser carregada. No entanto, em ambas as hipóteses a CMOS entra na lista por ser algo comum de perder a capacidade com o tempo.
+
+A hipótese da lista abaixo que foi selecionada para andamento do processo foi a que está em destaque.
  
 ### Lista de provável causa:
 
@@ -153,22 +244,12 @@ Contudo, pode ser outra a causa, por isso o carregador foi listado, porque se el
 
 ## 4. Plano para a resolução 
 
-Agora, com o escopo do que tem que ser resolvido, com as pistas do que pode ser, é o momento de ter um roteiro de como trabalhar na resolução para que esta tenha êxito. Logo, um plano para como resolver é traçado a partir de uma hipótese do passo 3. Observe, abaixo que ele pode ter alternativas dentro dele mesmo caso algo dê errado na própria hipótese selecionada.
+Agora, com o escopo do que tem que ser resolvido, com as pistas do que pode ser, é o momento de ter um roteiro de como trabalhar na resolução para que esta tenha êxito. Logo, um plano para como resolver é traçado a partir de uma hipótese do passo 3. Observe abaixo que ele pode ter alternativas dentro dele mesmo caso algo dê errado na própria hipótese selecionada.
 
-Para este problema e para muitos, é bom começar com o menos invasivo, para não correr o risco com alternativas que exigem desmontagem do equipamento. Então como pode ser visto para matriz
+Para este problema e para muitos, é bom começar com o menos invasivo, para não correr o risco com alternativas que exigem desmontagem do equipamento. 
 
 ### Plano caso seja a bateria principal e a bateria CMOS
 
-1. Checar se liga depois de configurar a BIOS, desligar e manter na tomada.
-2. 
-
-#### **🔍 Matriz de Testes**
-
-| Componente Analisado | Hipótese do Problema | Teste/Procedimento Executado | Resultado do Teste | Status |
-| :--- | :--- | :--- | :--- | :---: |
-| **Carregador** | Mau contato / Falha de módulo | Limpeza dos contatos e teste individual dos pentes em bancada | Memórias validadas e funcionais | 🟢 OK |
-| **Tela / Display** | Defeito no painel LCD | Conexão de vídeo externo via porta HDMI | Vídeo gerado no monitor externo | 🟢 OK |
-| **Cabo Flat (eDP)** | Rompimento ou conector solto | Inspeção de continuidade e verificação de encaixe lógico | Trava solta e oxidação leve | 🔴 Falha |
 
 
 <a id="implementar-plano"></a>
@@ -178,6 +259,14 @@ Para este problema e para muitos, é bom começar com o menos invasivo, para nã
 Por estar relacionado à bateria, testou-se deixar conectado à tomada após a operação para contornar (troca de UEFI para Legacy) e ele consegue iniciar o SO normalmente, ou até se em pouco tempo desconectado. Mas se ficar muito tempo desconectado, retorna na mesma mensagem de `No Bootable Device`.
 
 Ademais enquanto carrega, a luz indicadora de carregamento pisca a cada vinte segundos. Isso pr
+
+### **🔍 Matriz de Testes**
+
+| Componente Analisado | Hipótese do Problema | Teste/Procedimento Executado | Resultado do Teste | Status |
+| :--- | :--- | :--- | :--- | :---: |
+| **Carregador** | Mau contato / Falha de módulo | Limpeza dos contatos e teste individual dos pentes em bancada | Memórias validadas e funcionais | 🟢 OK |
+| **Tela / Display** | Defeito no painel LCD | Conexão de vídeo externo via porta HDMI | Vídeo gerado no monitor externo | 🟢 OK |
+| **Cabo Flat (eDP)** | Rompimento ou conector solto | Inspeção de continuidade e verificação de encaixe lógico | Trava solta e oxidação leve | 🔴 Falha |
 
 ### 🛡️ 1. Segurança e Preparação da Bancada
 
@@ -208,7 +297,9 @@ Ademais enquanto carrega, a luz indicadora de carregamento pisca a cada vinte se
 
 ## 📚 Referências & links úteis
 
-- Resposta da Acer sobre “No Bootable Device” na inicialização.: https://community.acer.com/pt/kb/articles/94-mensagem-de-erro-nenhum-dispositivo-de-arranque  
+- Resposta da Acer sobre “No Bootable Device” na inicialização.: https://community.acer.com/pt/kb/articles/94-mensagem-de-erro-nenhum-dispositivo-de-arranque
+
+- Instruções do Google para pesquisa avançada: https://support.google.com/websearch/answer/2466433
 
 - Artigo na comunidade da Acer sobre BIOS e UEFI e seus formatos de arquivo: https://community.acer.com/en/discussion/271870/uefi-bios-mbr-gpt-disks-and-multi-boot 
 

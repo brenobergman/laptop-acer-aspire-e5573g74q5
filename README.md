@@ -9,12 +9,10 @@ Este repositório funciona como uma **Base de Conhecimento Técnica (Knowledge B
 
 O objetivo principal é documentar a resolução de falhas de hardware, manutenção preventiva e upgrades de componentes utilizando uma metodologia estruturada de **isolamento de causas raízes**, servindo tanto como documentação de portfólio profissional quanto como guia de consulta pública.
 
-![]()
-
-
 <div align="center">
+  <br />
   <img
-    src="./troubleshooting-01/images/01-laptop.jpg"
+    src="./images/01-laptop.jpg"
     alt="O notebook visto de frente"
     width="650"
   />

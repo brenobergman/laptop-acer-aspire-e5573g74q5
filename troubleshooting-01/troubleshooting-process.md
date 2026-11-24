@@ -63,15 +63,16 @@ flowchart TD
 
 Na etapa inicial o problema deve ser definido claramente por seus sintomas e onde de fato ocorre. Isso a fim de definir o **escopo** e se concentrar em onde realmente uma alteração fará efeito, para uma resolução rápida.
 
-<figure>
+<div align="center">
   <img
-    src="images\02-erro-inicializacao.png"
-    alt="Erro da inicialização"
+    src="images/02-erro-inicializacao.png"
+    alt="Tela com o erro da inicialização: 'No Bootable Device'"
     width="500"
-  >
-  <figcaption>Figura 1 — Erro "No Bootable Device" ao inicializar.</figcaption>
-</figure>
-
+  />
+  <br />
+  <sub>Figura 1 — Erro "No Bootable Device" ao inicializar.</sub>
+  <p>&nbsp;</p>
+</div>
 
 O problema principal que incomoda o usuário é a inicialização, que ele tem que intervir na maioria das vezes para iniciar. Ele liga o notebook, a tela liga junto com o cooler e a luz de energia, e então desliga tudo; isso duas ou três vezes. Então, na próxima vez que isso ocorre aparece o logo da Acer (Post) e logo após o aviso `NO BOOTABLE DEVICE`. O que o usuário faz para contornar isso é alterar o modo de inicialização de UEFI (padrão do firmware) para Legacy, na BIOS, na maior parte das inicializações. Mas há também a questão da bateria não reter carga, que já vinha um tempo assim; a bateria é original e de 2015, então o usuário já sabia que precisaria trocar, no entanto, como o notebook ainda estava funcionando mesmo com a bateria ruim (como um desktop) ele a deixou assim, mas o que realmente incomodava era a questão de ter que intervir a cada inicialização.
 
@@ -137,7 +138,7 @@ Neste problema, foi tentado obter ajuda dos artigos do suporte oficial da Acer, 
 
 Partiu-se para uma busca geral pelo navegador por `"E5-573G-74Q5" "no bootable device"`, porque utilizando o mecanismo de busca Google isso filtra a busca por exatamente estas palavras no conteúdo web, pelo uso dos operadores aspas. Unindo esses dois o conteúdo focará no modelo exato do notebook e na mensagem exata do erro. Mesmo valendo-se dessa técnica de pesquisa avançada os conteúdos que pareceram eram genéricos, sem especificidade com o problema enfrentado.
 
-Agora, para fim de confirmar de forma mais rápida se de fato a bateria poderia estar relacionada e seguir em frente com o processo, como última alternativa às pesquisas mal sucedidas, foi feito um prompt para a inteligência artificial Gemini, do Google.
+Agora, para fim de confirmar de forma mais rápida se de fato a bateria poderia estar relacionada e seguir em frente com o processo, como última alternativa às pesquisas malsucedidas, foi feito um prompt para a inteligência artificial Gemini, do Google, com todos os sintomas e detalhes. As partes principais de seu retorno foram o que está apresentado
 
 Diante do que foi obtido da etapa anterior, e o fato de a bateria ter relação no problema, ela aparece em todas as hipóteses. Além disso, visto que é necessária intervenção do usuário na BIOS muitas vezes, a bateria CMOS que desempenha um papel de garantir que tais configurações não sejam perdidas pode também ter sido desgastada junto. Já que possivelmente o circuito ficou só dependente dela com a falta da contribuição da principal. Ou seja, ela acabou forçando com o tempo e degradou.
 
@@ -145,7 +146,7 @@ Contudo, pode ser outra a causa, por isso o carregador foi listado, porque se el
  
 ### Lista de provável causa:
 
-1. >**Bateria principal e bateria CMOS do notebook no fim da vida útil**
+1. **Bateria principal e bateria CMOS do notebook no fim da vida útil**
 2. Carregador do notebook não carregando a bateria principal e bateria CMOS no fim da vida útil.
 
 <a id="plano-para-a-solucao"></a>

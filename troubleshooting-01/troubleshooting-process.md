@@ -1,42 +1,22 @@
 <a id="topo"></a>
-# 🛠️ Incidente #01: Falha de Inicialização e problema de bateria
+# 🛠️ Processo de resolução de problema em 8 passos
 
 ### [➡️ Base de Conhecimento Técnica](knowledge-base.md) 
 ### [⬅️ Voltar ao Índice Geral do Repositório](../README.md) 
-
+ 
 > [!IMPORTANT]
 >🚧  Escrita em andamento! Podem estar faltando partes ou a estrutura não estar adequada. 🚧 
 
-## **Vídeo do procedimento**
-
 > [!NOTE]
->[![YouTube](https://img.shields.io/badge/Assistir%20ao%20reparo-red?logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=jOHRt1e4rxw) 
->* Procedimento resumido + dicas de uso/manutenção.
+>  **Vídeo do procedimento**.
+>
+> [![YouTube](https://img.shields.io/badge/Assistir%20ao%20reparo-red?logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=jOHRt1e4rxw) 
+> * Procedimento resumido + dicas de uso/manutenção.
 
 ---
 
 > [!IMPORTANT]
 > Essa documentação, foi incluída a este incidente, **em específico**, para mostrar o processo de resolução recomendado no curso da Cisco Networking Academy: "It Costumer Support Basics", que foi aplicado neste incidente e está resumido no vídeo.
-
----
-
-## 📍 Sumário
-
-* ### [Passos da resolução](#passos)
-  * #### [1. Definição do problema](#1-definicao-problema)
-  * #### [2. Informações detalhadas](#2-informacoes-detalhadas)
-  * #### [3. Identificação da provável causa](#identificacao-da-provavel-causa)
-  * #### [4. Plano para a resolução](#plano-para-a-solucao)
-  * #### [5. Implementar o plano](#implementar-plano)
-  * #### [6. Observar Resultados & Verificar](#observar-resultados-verificar)
-  * #### [7. O problema foi resolvido?](#problema-resolvido)
-* ### [Referências](#referencias)
-
----
-
-<a id="passos"></a>
-
-## **Passos da Resolução**
 
 Visualmente, o processo de resolução pode ser compreendido por meio do diagrama abaixo. O conceito mais importante do processo que fica visível com essa visualização é o passo 7, onde ocorre a **iteração** do processo enquanto este não é resolvido. Assim, justamente por isso, o processo de resolução é compreendido como um **ciclo**. 
 
@@ -57,13 +37,29 @@ flowchart TD
 
 > 📌 **Nota de Metodologia:** O diagrama acima é uma representação autoral baseada na metodologia apresentada no curso da Cisco Networking Academy.
 
+---
+
+## 📍 Sumário
+
+* ### [Passos da resolução](#passos)
+  * #### [1. Definição do problema](#1-definicao-problema)
+  * #### [2. Informações detalhadas](#2-informacoes-detalhadas)
+  * #### [3. Identificação da provável causa](#identificacao-da-provavel-causa)
+  * #### [4. Plano para a resolução](#plano-para-a-solucao)
+  * #### [5. Implementar o plano](#implementar-plano)
+  * #### [6. Observar Resultados & Verificar](#observar-resultados-verificar)
+  * #### [7. O problema foi resolvido?](#problema-resolvido)
+* ### [Referências](#referencias)
+
+---
+
 <a id="1-definicao-problema"></a>
 
 ## 1. Definição do problema 
 
 Na etapa inicial o problema deve ser definido claramente por seus sintomas e onde de fato ocorre. Isso a fim de definir o **escopo** e se concentrar em onde realmente uma alteração fará efeito, para uma resolução rápida.
 
-O problema principal que incomoda o usuário é a inicialização, que ele tem que intervir na maioria das vezes para iniciar. Ele liga o notebook, a tela liga junto com o cooler e a luz de energia, e então desliga tudo; isso duas ou três vezes. Então, na próxima vez que isso ocorre aparece o logo da Acer (Post) e logo após o aviso `NO BOOTABLE DEVICE`. O que o usuário faz para contornar isso é alterar o modo de inicialização de UEFI (padrão do firmware) para Legacy, na BIOS, na maior parte das inicializações. 
+O problema principal que incomodava o usuário é a inicialização, que ele tinha que intervir na maioria das vezes para iniciar. Ele ligava o notebook, a tela ligava junto com o cooler e a luz de energia, e então desligava tudo; isso duas ou três vezes. Então, na próxima vez que isso ocorria aparece o logo da Acer (Post) e logo após o aviso `NO BOOTABLE DEVICE`. O que o usuário fazia para contornar isso é alterar o modo de inicialização de UEFI (padrão do firmware) para Legacy, na BIOS, na maior parte das inicializações. 
 
 <div align="center">
   <br />
@@ -81,11 +77,11 @@ O problema principal que incomoda o usuário é a inicialização, que ele tem q
     width="500"
   />
   <br />
-  <sub>Imagem 2 — Alterando o modo de inicialização na BIOS, de UEFI para Legacy</sub>
+  <sub>Imagem 2 — Alterando o modo de inicialização na BIOS, de UEFI para Legacy.</sub>
   <p>&nbsp;</p>
 </div>
 
-Mas há também a questão da bateria não reter carga, que já vinha um tempo assim; a bateria é original e de 2015, então o usuário já sabia que precisaria trocar, no entanto, como o notebook ainda estava funcionando mesmo com a bateria ruim (como um desktop) ele a deixou assim, mas o que realmente incomodava era a questão de ter que intervir a cada inicialização.
+Mas ocorria também a questão da bateria não reter carga, que já vinha um tempo assim; a bateria era original e de 2015, então o usuário já sabia que precisaria trocar, no entanto, como o notebook ainda estava funcionando mesmo com a bateria ruim (como um desktop) ele a deixou assim, mas o que realmente incomodava era a questão de ter que intervir a cada inicialização.
 
 <div align="center">
   <br />
@@ -99,7 +95,7 @@ Mas há também a questão da bateria não reter carga, que já vinha um tempo a
   <p>&nbsp;</p>
 </div>
 
-Portanto, são dois problemas, um de inicialização e outro de bateria, que pode estar relacionado. Por isso é importante adquirir mais detalhes com o passo 2.
+Portanto, eram dois problemas, um de inicialização e outro de bateria, que poderia estar relacionado. Por isso é importante adquirir mais detalhes com o passo 2.
 
 ### Problema:
 
@@ -135,13 +131,11 @@ Portanto, são dois problemas, um de inicialização e outro de bateria, que pod
 
 ## 2. Informações detalhadas
 
-Nessa etapa, mais informações são buscadas com base no problema definido. Ou seja, enquanto na etapa anterior era buscado O QUE ERA, agora se busca: "Desde quando isso ocorre", "algo que foi alterado antes do funcionamento normal", etc. Com estas informações o que se tinha do problema deixa apenas de ser uma definição dele para uma descrição mais completa dele, de seu "entorno" e de seu histórico. Essas informações a mais ajudar a dar pistas sobre a provável causa.
+Nesta etapa, mais informações são buscadas com base no problema definido. Ou seja, enquanto na etapa anterior era buscado O QUE ERA, agora se busca: "Desde quando isso ocorre", "algo que foi alterado antes do funcionamento normal", etc. Com estas informações o que se tinha do problema deixa apenas de ser uma definição dele para uma descrição mais completa dele, de seu "entorno" e de seu histórico. Essas informações a mais, unidas, ajudam a obter **pistas** sobre a provável causa.
 
 Foi apurado se algo foi feito no dispositivo antes de começarem esses erros na inicialização, porque isso pode ser decorrente de alguma má configuração que o usuário fez ou por outros erros. E descobriu-se que começou a aproximadamente três anos em paralelo com desligamentos inesperados, pela porcentagem mostrada da bateria estar errada. Ademais, nos últimos tempos apareceram mais vezes o erro e, posteriormente a uma calibragem da bateria para correção da porcentagem, ela já não carregava mais e o dispositivo não ligava sem estar na tomada.
 
-<!-- FIXME: continuar aqui - Acrescentando procedimento de teste inicial de preservação da configuração da BIOS conectado à tomada. -->
-
-Um pequeno teste rápido realizado para coletar mais informações desse problema, pela informação anterior indicar que apareceu junto com a degradação da bateria, foi o de realizar a configuração da BIOS e então verificar se eram mantidas as configurações pela energia, da tomada. e 
+Um teste rápido realizado para coletar mais informações desse problema, pela informação anterior indicar que apareceu junto com a degradação da bateria, foi o de realizar a configuração da BIOS e então verificar se eram mantidas deixando conectado na tomado depois de desligar. O resultado foi que de fato as configurações foram preservadas, mas deixando desconectado, por um tempo, já são perdidas. Isso garantiu duas coisas: a energia flui do plugue que vem da fonte até o circuito responsável por manter as alterações na BIOS, assim como até o componente que preserva elas, e que a bateria desempenhava antes um papel no salvamento das alterações.
 
 <div align="center">
   <br />
@@ -155,13 +149,13 @@ Um pequeno teste rápido realizado para coletar mais informações desse problem
   <p>&nbsp;</p>
 </div>
 
-Então, principalmente pelo fato de a inicialização apresentar mais o erro em sequência de um procedimento que acarretou também com perda da capacidade da bateria armazenar a carga, então este é um detalhe que indica a bateria como uma causa. Ou seja, esse processo levou a uma pista importante.
+Então, principalmente pela inicialização apresentar mais vezes o erro em sequência de um procedimento que acarretou também com perda da capacidade da bateria de armazenar a carga, esse processo de encontrar detalhes levou a uma pista importante, a bateria como uma possível causa.
 
 ### Detalhes:
 
 - Porcentagem da bateria estava indicando errada.
-- Foi feita uma calibração da bateria e então ela não reteve mais carga, notebook ficou dependente de estar na tomada após isso.
-- Problema da inicialização predominou, também depois da calibragem da bateria.
+- Após calibração da bateria e ela não reteve mais carga, notebook ficou dependente de estar na tomada.
+- Problema da inicialização predominou depois da calibragem da bateria.
 - Se conectado à energia, despois de desligado, permanecem as configurações na próxima inicialização.
 
 <a id="identificacao-da-provavel-causa"></a>
@@ -200,7 +194,7 @@ Partiu-se para uma busca geral pelo navegador por `"E5-573G-74Q5" "no bootable d
   <p>&nbsp;</p>
 </div>
 
-Agora, para fim de confirmar de forma mais rápida se de fato a bateria poderia estar relacionada e seguir em frente com o processo, como última alternativa às pesquisas malsucedidas, foi feito um prompt simples para a inteligência artificial Gemini, do Google, com a visão geral do problema. Porque com os dados que se tinha até então e por ter maior certeza de serem as baterias, a resposta da IA poderia ser mais um indicativo, caso confirmasse, ou traria outra observação que não foi percebida até então. isso considerando um retorno com menos erro possível, mas caso fosse algo muito discrepante seria rapidamente percebido pelo que foi estudado do problema. Em outras palavras, independente do retorno que o modelo fornecesse, seria uma tentativa a mais de pesquisa. O prompt utilizado e as partes principais de seu retorno estão apresentados nas imagens abaixo.
+Por fim, para fim de confirmar de forma mais rápida se de fato a bateria poderia estar relacionada e seguir em frente com o processo, como última alternativa às pesquisas malsucedidas, foi feito um prompt simples para a inteligência artificial Gemini, do Google, com a visão geral do problema. Porque com os dados que se tinha até então e por ter maior certeza de serem as baterias, a resposta da IA poderia ser mais um indicativo, caso confirmasse, ou traria outra observação que não foi percebida até então. isso considerando um retorno com menos erro possível, mas caso fosse algo muito discrepante seria rapidamente percebido pelo que foi estudado do problema. Em outras palavras, independente do retorno que o modelo fornecesse, seria uma tentativa a mais de pesquisa. O prompt utilizado e as partes principais de seu retorno estão apresentados nas imagens abaixo.
 
 <div align="center">
   <img
@@ -231,10 +225,13 @@ Agora, para fim de confirmar de forma mais rápida se de fato a bateria poderia 
 
 Diante do que foi obtido e o fato de a bateria ter relação no problema, ela aparece em todas as hipóteses. Além disso, visto que é necessária intervenção do usuário na BIOS muitas vezes, a bateria CMOS que desempenha um papel de garantir que tais configurações não sejam perdidas pode também ter sido desgastada junto, como apontado pela IA. Já que possivelmente o circuito ficou só dependente dela com a falta da contribuição da principal. Ou seja, ela acabou forçando com o tempo e degradou.
 
-Contudo, pode ser outra a causa, por isso o carregador foi listado, porque se ele estiver com falha, logicamente a bateria não irá ser carregada. No entanto, em ambas as hipóteses a CMOS entra na lista por ser algo comum de perder a capacidade com o tempo.
+Contudo, pode ser outra a causa, por isso o caminho até a energia chegar e carregar a bateria pode ser uma causa, porque se ele estiver com falha, logicamente a bateria não irá ser carregada. Apesar da bateria ser antiga e provavelmente estar no fim da vida útil. No entanto, em ambas as hipóteses a CMOS entra na lista por ser algo comum de perder a capacidade com o tempo.
 
 A hipótese da lista abaixo que foi selecionada para andamento do processo foi a que está em destaque.
- 
+
+> [!TIP]
+> Problemas no circuito que preserva as configurações não foram listados por conta de na etapa 2 ser considerado que ele está passando energia. Isso foi importante para eliminar uma possibilidade.
+
 ### Lista de provável causa:
 
 1. **Bateria principal e bateria CMOS do notebook no fim da vida útil**
@@ -248,8 +245,13 @@ Agora, com o escopo do que tem que ser resolvido, com as pistas do que pode ser,
 
 Para este problema e para muitos, é bom começar com o menos invasivo, para não correr o risco com alternativas que exigem desmontagem do equipamento. 
 
+<!-- TODO: continuar aqui - Descrevendo os passos e depois os explicando -->
+
 ### Plano caso seja a bateria principal e a bateria CMOS
 
+1. 
+2. 
+3. 
 
 
 <a id="implementar-plano"></a>

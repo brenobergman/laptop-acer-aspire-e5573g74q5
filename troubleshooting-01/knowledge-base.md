@@ -1,8 +1,9 @@
 <a id="topo"></a>
 # Base de Conhecimento Técnica (Knowledge Base) #01	Falha de Inicialização, troca de bateria
 
-### [➡️ Processo de Resolução](troubleshooting-process.md) 
-### [⬅️ Voltar ao Índice Geral do Repositório](../README.md) 
+<p align="center">
+  <b><big><a href="../README.md">⬅️ Voltar ao Índice Geral do Repositório</a></big></b> &nbsp;|&nbsp; <b><big><a href="troubleshooting-process.md">➡️ Processo de resolução</a></big></b>
+</p>
 
 > [!IMPORTANT]
 >🚧  Escrita em andamento! Podem estar faltando partes ou a estrutura não estar adequada. 🚧 
@@ -86,6 +87,8 @@ HISTÓRICO DE REVISÕES:
 >[!NOTE]
 >Mas os passos para chegar a esses dados são os descritos em **Passos da Resolução**, que de fato foram usados para resolver este problema. 
 
-### [⬆️ Voltar ao Topo](#topo) 
-### [➡️ Processo de Resolução](troubleshooting-process.md) 
-### [⬅️ Voltar ao Índice Geral do Repositório](../README.md) 
+<p align="center">
+  <b><big><a href="#topo">⬆️ Voltar ao Topo</a></big></b> &nbsp;|&nbsp;
+  <b><big><a href="../README.md">⬅️ Voltar ao Índice Geral do Repositório</a></big></b> &nbsp;|&nbsp;
+  <b><big><a href="troubleshooting-process.md">➡️ Processo de resolução</a></big></b>
+</p>

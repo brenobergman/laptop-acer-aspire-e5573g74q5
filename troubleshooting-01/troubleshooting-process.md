@@ -1,14 +1,15 @@
 <a id="topo"></a>
 # 🛠️ Processo de resolução de problema em 8 passos
 
-### [➡️ Base de Conhecimento Técnica](knowledge-base.md) 
-### [⬅️ Voltar ao Índice Geral do Repositório](../README.md) 
+<p align="center">
+  <b><big><a href="../README.md">⬅️ Voltar ao Índice Geral do Repositório</a></big></b> &nbsp;|&nbsp; <b><big><a href="knowledge-base.md">➡️ Base de Conhecimento Técnica</a></big></b>
+</p>
  
 > [!IMPORTANT]
 >🚧  Escrita em andamento! Podem estar faltando partes ou a estrutura não estar adequada. 🚧 
 
 > [!NOTE]
->  **Vídeo do procedimento**.
+> **Vídeo do procedimento**.
 >
 > [![YouTube](https://img.shields.io/badge/Assistir%20ao%20reparo-red?logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=jOHRt1e4rxw) 
 > * Procedimento resumido + dicas de uso/manutenção.
@@ -16,7 +17,7 @@
 ---
 
 > [!IMPORTANT]
-> Essa documentação, foi incluída a este incidente, **em específico**, para mostrar o processo de resolução recomendado no curso da Cisco Networking Academy: "It Costumer Support Basics", que foi aplicado neste incidente e está resumido no vídeo.
+> Essa documentação, foi incluída a este incidente, **em específico**, para mostrar o processo de resolução recomendado no curso da Cisco Networking Academy: "IT Costumer Support Basics", que foi aplicado neste incidente e está resumido no vídeo.
 
 Visualmente, o processo de resolução pode ser compreendido por meio do diagrama abaixo. O conceito mais importante do processo que fica visível com essa visualização é o passo 7, onde ocorre a **iteração** do processo enquanto este não é resolvido. Assim, justamente por isso, o processo de resolução é compreendido como um **ciclo**. 
 
@@ -69,7 +70,7 @@ O problema principal que incomodava o usuário é a inicialização, que ele tin
     width="500"
   />
   <br />
-  <sub>Imagem 1 — Erro "No Bootable Device" ao inicializar.</sub>
+  <sub><i>Imagem 1 — Erro "No Bootable Device" ao inicializar.</i></sub>
   <br /><br /><br />
   <img
     src="images/02-mudança-de-boot.png"
@@ -77,7 +78,7 @@ O problema principal que incomodava o usuário é a inicialização, que ele tin
     width="500"
   />
   <br />
-  <sub>Imagem 2 — Alterando o modo de inicialização na BIOS, de UEFI para Legacy.</sub>
+  <sub><i>Imagem 2 — Alterando o modo de inicialização na BIOS, de UEFI para Legacy.</i></sub>
   <p>&nbsp;</p>
 </div>
 
@@ -91,7 +92,7 @@ Mas ocorria também a questão da bateria não reter carga, que já vinha um tem
     width="500"
   />
   <br />
-  <sub>Imagem 3 — A porcentagem informada pelo sistema operacional permanece em 0%.</sub>
+  <sub><i>Imagem 3 — A porcentagem informada pelo sistema operacional permanece em 0%.</i></sub>
   <p>&nbsp;</p>
 </div>
 
@@ -145,7 +146,7 @@ Um teste rápido realizado para coletar mais informações desse problema, pela 
     width="500"
   />
   <br />
-  <sub>Imagem 4 — Inicialização normal pela preservação das configurações pela energia da tomada.</sub>
+  <sub><i>Imagem 4 — Inicialização normal pela preservação das configurações pela energia da tomada.</i></sub>
   <p>&nbsp;</p>
 </div>
 
@@ -176,7 +177,7 @@ Neste problema, foi tentado obter ajuda dos artigos do suporte oficial da Acer, 
     width="500"
   />
   <br />
-  <sub>Imagem 5 — Suporte da acer (https://www.acer.com/br-pt/search/search-support?search=nenhum%20dispositivo%20inicializ%C3%A1vel) após aplicar a pesquisa por palavra-chave.</sub>
+  <sub><i>Imagem 5 — Suporte da acer (https://www.acer.com/br-pt/search/search-support?search=nenhum%20dispositivo%20inicializ%C3%A1vel) após aplicar a pesquisa por palavra-chave.</i></sub>
   <p>&nbsp;</p>
 </div>
 
@@ -190,7 +191,7 @@ Partiu-se para uma busca geral pelo navegador por `"E5-573G-74Q5" "no bootable d
     width="500"
   />
   <br />
-  <sub>Imagem 6 — Intruções para pesquisa avançada com operadores fornecida do mecanismo de pesquisa Google (https://support.google.com/websearch/answer/2466433).</sub>
+  <sub><i>Imagem 6 — Intruções para pesquisa avançada com operadores fornecida do mecanismo de pesquisa Google (https://support.google.com/websearch/answer/2466433).</i></sub>
   <p>&nbsp;</p>
 </div>
 
@@ -203,7 +204,7 @@ Por fim, para fim de confirmar de forma mais rápida se de fato a bateria poderi
     width="400"
   />
   <br />
-  <sub>Imagem 7 — Prompt feito para a inteligência artificial Gemini.</sub>
+  <sub><i>Imagem 7 — Prompt feito para a inteligência artificial Gemini.</i></sub>
   <br /><br /><br />
   <img
     src="images/08-1resultado-gemini.png"
@@ -211,7 +212,7 @@ Por fim, para fim de confirmar de forma mais rápida se de fato a bateria poderi
     width="500"
   />
   <br />
-  <sub>Imagem 8 — Parte 1 da resposta da IA.</sub>
+  <sub><i>Imagem 8 — Parte 1 da resposta da IA.</i></sub>
   <br /><br /><br />
   <img
     src="images/09-2resultado-gemini.png"
@@ -219,7 +220,7 @@ Por fim, para fim de confirmar de forma mais rápida se de fato a bateria poderi
     width="500"
   />
   <br />
-  <sub>Imagem 9 — Parte 2 da resposta da IA.</sub>
+  <sub><i>Imagem 9 — Parte 2 da resposta da IA.</i></sub>
   <p>&nbsp;</p>
 </div>
 
@@ -241,34 +242,56 @@ A hipótese da lista abaixo que foi selecionada para andamento do processo foi a
 
 ## 4. Plano para a resolução 
 
-Agora, com o escopo do que tem que ser resolvido, com as pistas do que pode ser, é o momento de ter um roteiro de como trabalhar na resolução para que esta tenha êxito. Logo, um plano para como resolver é traçado a partir de uma hipótese do passo 3. Observe abaixo que ele pode ter alternativas dentro dele mesmo caso algo dê errado na própria hipótese selecionada.
+Agora, com o escopo do que tem que ser resolvido, com as pistas do que pode ser, é o momento de ter um roteiro de como trabalhar na resolução para que esta tenha êxito. Logo, um plano para como resolver é traçado a partir de uma hipótese do passo 3. Observe abaixo que ele pode ter alternativas dentro dele mesmo caso algo dê errado na própria hipótese selecionada, de acordo com o que for sendo obtido na resolução.
 
-Para este problema e para muitos, é bom começar com o menos invasivo, para não correr o risco com alternativas que exigem desmontagem do equipamento. 
+Para este problema e para muitos, é bom começar com o menos invasivo, para não correr o risco com alternativas que exigem desmontagem do equipamento. Isso é notado no plano quando se vem realizando testes e diagnósticos antes de realizar qualquer abertura do equipamento.
 
-<!-- TODO: continuar aqui - Descrevendo os passos e depois os explicando -->
+Do 1 ao 3 são feitas ações para garantir que é a bateria. Ao completar o passo 3 haverá informações suficientes para poder continuar com o descrito no passo 5 ou para desviar para outra causa, conforme o passo 6. Portanto, esse plano considera que ainda podem surgir informações no processo que influenciarão na decisão de qual é a causa raiz.
 
 ### Plano caso seja a bateria principal e a bateria CMOS
 
-1. 
-2. 
-3. 
-
+1. Realizar reset da bateria e testar se carrega.
+2. Checar saúde da bateria pelo diagnóstico de gerenciamento de energia do Windows, estando atento a capacidade informada e aos avisos. 
+3. Checar carregador.
+4. Se o carregador estiver ruim:
+    - 4.1. Tentar carregar com outro.
+5. Caso tudo continue indicando as baterias:
+    - 5.1. Retirar a bateria principal.
+    - 5.2. Verificar suas especificações.
+    - 5.3. Substituir por uma nova e compatível.
+    - 5.4. Checar voltagem da bateria CMOS
+    - 5.5. Se tensão abaixo do nominal: 
+        - 5.5.1. Substituir a célula CMOS.
+    - 5.6. Se a bateria CMOS apresentar voltagem normal:
+        - 5.6.1. Testar se configurações são preservadas com outra nova.
+6. Caso não esteja indicando as baterias, mas o carregador ou outro componente:
+    - 6.1. Voltar para o processo de identificação de causa provável.
+    - 6.2. Caso não tenha uma causa listada que esteja próxima dos indicativos:
+        - 6.2.1. Registrar novos sintomas/medições, pesquisar códigos ou comportamentos observados e abrir uma nova hipótese de falha.
+    - 6.3. Seguir com outro plano a partir de uma causa provável listada.
 
 <a id="implementar-plano"></a>
 
 ## 5. Implementar o plano 
 
-Por estar relacionado à bateria, testou-se deixar conectado à tomada após a operação para contornar (troca de UEFI para Legacy) e ele consegue iniciar o SO normalmente, ou até se em pouco tempo desconectado. Mas se ficar muito tempo desconectado, retorna na mesma mensagem de `No Bootable Device`.
+Este é o passo onde ocorrem as intervenções apresentados no plano. Cada etapa é realizada por vez para garantir que de fato um passo resolve ou a sequência de passos está apresentando resultados.
 
-Ademais enquanto carrega, a luz indicadora de carregamento pisca a cada vinte segundos. Isso pr
+<!-- TODO: continuar aqui -->
 
-### **🔍 Matriz de Testes**
+A matriz de testes abaixo fornece de forma mais rápida e resumida os resultados dos testes. Isso é importante para saber se segue ou não com passos do plano que dependem dos resultados, ou seja, ela ajuda a tomar uma decisão racional conforme a especificidade de cada probabilidade.
 
-| Componente Analisado | Hipótese do Problema | Teste/Procedimento Executado | Resultado do Teste | Status |
-| :--- | :--- | :--- | :--- | :---: |
-| **Carregador** | Mau contato / Falha de módulo | Limpeza dos contatos e teste individual dos pentes em bancada | Memórias validadas e funcionais | 🟢 OK |
-| **Tela / Display** | Defeito no painel LCD | Conexão de vídeo externo via porta HDMI | Vídeo gerado no monitor externo | 🟢 OK |
-| **Cabo Flat (eDP)** | Rompimento ou conector solto | Inspeção de continuidade e verificação de encaixe lógico | Trava solta e oxidação leve | 🔴 Falha |
+
+<div align="center">
+  <br />
+  <img
+    src="images/10-reset-bat.jpg"
+    alt="Parte inferior do notebook em que se encontra o orifício para realizar o reset da bateria."
+    width="500"
+  />
+  <br />
+  <sub><i>Imagem 10 — Reset hole (orifício de reset) do Acer E5-573G-74Q5.</i></sub>
+  <p>&nbsp;</p>
+</div>
 
 ### 🛡️ 1. Segurança e Preparação da Bancada
 
@@ -280,6 +303,16 @@ Ademais enquanto carrega, a luz indicadora de carregamento pisca a cada vinte se
 * **Ferramental:** Jogo de chaves de precisão PH0/PH00 e espátulas plásticas de náilon.
 
 > **💡 Dica de bancada:** Mantenha os parafusos organizados em um organizzador magnético para evitar perdas.
+
+
+### **🔍 Matriz de Testes**
+
+| Componente Analisado | Hipótese do Problema | Teste/Procedimento Executado | Resultado do Teste | Status |
+| :--- | :--- | :--- | :--- | :---: |
+| **Carregador** | Mau contato / Falha de módulo | Limpeza dos contatos e teste individual dos pentes em bancada | Memórias validadas e funcionais | 🟢 OK |
+| **Tela / Display** | Defeito no painel LCD | Conexão de vídeo externo via porta HDMI | Vídeo gerado no monitor externo | 🟢 OK |
+| **Cabo Flat (eDP)** | Rompimento ou conector solto | Inspeção de continuidade e verificação de encaixe lógico | Trava solta e oxidação leve | 🔴 Falha |
+
 
 
 <a id="observar-resultados-verificar"></a>
@@ -333,6 +366,8 @@ Ademais enquanto carrega, a luz indicadora de carregamento pisca a cada vinte se
 
 ---
 
-### [⬆️ Voltar ao Topo](#topo) 
-### [➡️ Base de Conhecimento Técnica](knowledge-base.md) 
-### [⬅️ Voltar ao Índice Geral do Repositório](../README.md) 
+<p align="center">
+  <b><big><a href="#topo">⬆️ Voltar ao Topo</a></big></b> &nbsp;|&nbsp;
+  <b><big><a href="../README.md">⬅️ Voltar ao Índice Geral do Repositório</a></big></b> &nbsp;|&nbsp;
+  <b><big><a href="knowledge-base.md">➡️ Base de Conhecimento Técnica</a></big></b>
+</p>

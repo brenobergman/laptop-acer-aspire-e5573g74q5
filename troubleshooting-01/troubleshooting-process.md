@@ -9,7 +9,7 @@
 >🚧  Escrita em andamento! Podem estar faltando partes ou a estrutura não estar adequada. 🚧 
 
 > [!NOTE]
-> **Vídeo do procedimento**.
+> **Vídeo do procedimento**
 >
 > [![YouTube](https://img.shields.io/badge/Assistir%20ao%20reparo-red?logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=jOHRt1e4rxw) 
 > * Procedimento resumido + dicas de uso/manutenção.
@@ -276,6 +276,8 @@ Do 1 ao 3 são feitas ações para garantir que é a bateria. Ao completar o pas
 
 Este é o passo onde ocorrem as intervenções apresentados no plano. Cada etapa é realizada por vez para garantir que de fato um passo resolve ou a sequência de passos está apresentando resultados.
 
+### 1. Reset da Bateria
+
 Seguindo o plano, realizou-se o reset da bateria. Para tal procedimento, um objeto recomendado a ser introduzido é um clipe de papel (de preferência com o arame com uma ponta reta). O equipamento deve estar desconectado do adaptador de 
 energia e toatalmente desligado. O clipe deve ser inserido até alcançar o componente (que nesse caso não é um botão que dá para sentir "clique" ao pressionar) e pressionado (sem forçar) por 5 segundos. Depois, esperar mais alguns segundos, para dissipar energia, e então conectar a fonte ao notebook e ligá-lo.
 
@@ -294,44 +296,147 @@ energia e toatalmente desligado. O clipe deve ser inserido até alcançar o comp
   <p>&nbsp;</p>
 </div>
 
-<!-- TODO: continuar aqui - descrevendo o processo de checagem por software -->
-
 O processo de reset não teve efeito nenhum sobre o dispositivo. Logo, fora seguido com o próximo item do plano, a checagem por software do estado da bateria e seus registros.
+
+### 2. Diagnóstico por sofware
+
+Umas funções disponíveis por linha de comando do diagnóstico de gerenciamento de energia do Windows possibilitam ter em mãos informações úteis sobre a bateria. Isso é obtido pelos comandos `powercfg /batteryreport` e `powercfg /energy`. Ambos geram um arquivo no formato HTML que pode ser aberto no navegador, que nem um site. São complementares, como mostra a tabela abaixo.
+
+| Característica | `energy`	| `batteryreport` |
+| :---: | :--- | :--- | 
+| Objetivo	| Diagnosticar eficiência energética	| Avaliar bateria e histórico |
+| Foco	| Windows, drivers, dispositivos e configurações | Bateria, capacidade e utilização |
+| Detecta desgaste físico da bateria? |	Não diretamente |	Ajuda a estimar |
+| Detecta problemas de software que consomem energia? |	Sim, identifica problemas potenciais	| Não é o foco |
+| Precisa estar ocioso? |	Recomendado |	Não |
+
 
 <div align="center">
   <br />
   <img
     src="images/11-software-gerenc-bat.png"
-    alt=""
+    alt="Tela do prompt de comando do Windows com a explicação dos comandos utilizados em destaque"
     width="500"
   />
   <br />
-  <sub><i>Imagem 11  — .</i></sub>
-  <br /><br /><br />
-  <img
-    src="image"
-    alt="Texto"
-    width="500"
-  />
-  <br />
-  <sub><i>Imagem  — texto</i></sub>
+  <sub><i>Imagem 11  — Explicação dos comandos utilizados pela ajuda integrada do prompt de comando do Windows.</i></sub>
   <p>&nbsp;</p>
 </div>
 
-### 🛡️ 1. Segurança e Preparação da Bancada
+> [!WARNING]
+> Por serem comandos que acessam informações e configurações protegidas do sistema, é necessário a elevação de UAC, executar como administrador
+
+É melhor realizar primeiro o `batteryreport` e depois deixar o dispositivo ocioso por um tempo e sem nenhuma aplicação aberta além do interpretador de comandos para utilizar o `energy`. Abaixo o passo a passo:
+
+```
+Pesquisar > digitar "prompt de comando" > botão direito > "Executar como administrador" > "Sim" > Digitar "powercfg /batteryreport" > aguardar alguns segundos > Digitar "powercfg /energy" > Colar em uma nova aba "C:\Windows\System32\battery-report.html" e "C:\Windows\System32\energy-report.html" no navegador. 
+```
+
+> [!NOTE]
+> `C:\Windows\System32` é o caminho onde se armazenam os arquivos gerados se for executado como administrador.
+
+A imagem abaixo mostra o maior indicativo de que a bateria estava no fim da vida útil. A capacidade energética em mWh (miliwatt-hora) informada da última carga total apontava em cerca de 35% (12994 mWh) do total (37 mWh). Um desgaste de 24006 mWh (60%).
+
+<div align="center">
+  <br />
+  <img
+    src="images/12-result-software-gerenc-bat.png"
+    alt="Destaque do diagnóstico do comando 'powercfg /energy' em que mostra 12994 mWh de capacidade energética retida na útima carga total."
+    width="500"
+  />
+  <br />
+  <sub><i>Imagem 12 — Evidência de problema na retenção de carga da bateria apresentada no arquivo gerado pelo "energy".</i></sub>
+  <p>&nbsp;</p>
+</div>
+
+Além disso, no resultado do `batteryreport`, nem havia registro de capacidades recentes. Pode-se concluir que nem havia uma comunicação com o sistema da bateria; provavelmente não havia carga para isso ou estava bloqueado por segurança. 
+
+> [!IMPORTANT]
+> **Cálculo da capacidade restante:**
+>
+> ( [Capacidade atual] ÷ [Capacidade original] ) × 100 = [**Capacidade restante em %**]
+>
+> **Cálculo do desgaste estimado:**
+> 
+> 100% − [Capacidade restante em %] = [**Desgaste estimado em %**]
+
+### 3. Teste do carregador
+
+Antes de tudo, conferir minuciosamente se não há avaria, visualmente, é uma boa prática. O cabo e os pontos de conexão, bem como os contatos, devem ser analisados para certificar se estão isolados, não há sinais de queima e se estão brilhantes e limpos (no caso dos contatos). Apesar de simples, com isso é possível identificar riscos e problemas sem nenhum equipamento.
+
+<div align="center">
+  <br />
+  <img
+    src="images/13-diagnostico-carregador.png"
+    alt="Cabo do adaptador de energia no ponto de alívio de tensão na junção com o plugue de alimentação sem nenhuma rachadura ou corte."
+    width="500"
+  />
+  <br />
+  <sub><i>Imagem 13 — Ponto de alívio de tensão (strain relief) íntegro durante checagem.</i></sub>
+  <p>&nbsp;</p>
+</div>
+
+Como não apresentava rachaduras e nenhum outro sinal de atenção, seguiu-se para o teste da tensão com o multímetro. 
+
+> [!CAUTION]
+> Risco de choque elétrico ou danos ao equipamento de medição se protocolos de segurança não forem seguidos.
+
+O teste no carregador se concentrou em checar se ele realmente fornece 19 volts necessário um equipamento para fazer a leitura da grandeza elétrica Volt. Nesse caso, foi utilizado um multímetro.
 
 > [!WARNING]
-> ### ⚠️ **Protocolo de Segurança Eletrostática (ESD):** 
-> Antes de qualquer intervenção interna na placa-mãe, o equipamento foi desenergizado via desconexão da **bateria principal** e remoção da **pilha CMOS** para zerar cargas residuais dos capacitores.
+> - ⚠️ **Protocolo de segurança para medir a tensão da fonte:**
+> - Trabalhar em superfície seca, estável e não condutora.
+> - Inspecionar a fonte, o cabo e o conector P4; não utilizar se houver danos.
+> - Configurar o multímetro em tensão contínua (V⎓), na escala superior a que será medida o mais próximo do valor, com ponta preta em COM e vermelha em V/Ω.
+> - Confirmar a tensão nominal e a polaridade indicadas na etiqueta.
+> - Evitar encostar simultaneamente os contatos positivo e negativo, prevenindo curto-circuito.
+> - Manipular as pontas de prova somente pelas partes isoladas.
+> - Não abrir a fonte nem tocar em seus componentes internos.
+> - Interromper a medição em caso de faísca, aquecimento, cheiro de queimado ou instabilidade.
 
-* **Insumos Utilizados:** Álcool Isopropílico 99.8%, Pasta Térmica à base de Prata, Pincel Antiestático e Manta ESD.
-* **Ferramental:** Jogo de chaves de precisão PH0/PH00 e espátulas plásticas de náilon.
+Conforme especificado na fonte o positivo é no centro do plugue, então deve ser inserida a ponteira vermelha nele e a preta no lado externo. Neste modelo o polo positivo do plugue é mais difícil de alcançar. E a tensão nominal informada é 19 V.
 
-> **💡 Dica de bancada:** Mantenha os parafusos organizados em um organizzador magnético para evitar perdas.
+Por fim, constatou-se que a tensão está íntegra. Considerando uma taxa de 5% de tolerância (18,05 V a 19,95 V), o resultado aferido, de no máximo 19,49 V, está dentro do normal.
 
-A matriz de testes abaixo fornece de forma mais rápida e resumida os resultados dos testes. Isso é importante para saber se segue ou não com passos do plano que dependem dos resultados. Ou seja, ela ajuda a tomar uma decisão racional conforme a especificidade de cada resultado possível.
+<div align="center">
+  <br />
+  <img
+    src="images/14-result-multimetro.png"
+    alt="Multímetro apresentando 19,49 V ao encostar a ponteira vermelha no centro e a preta no metal externo do plugue de conexão com o notebook, com a escala de tensão contínua de 20 V, com a fonte conectada na tomada."
+    width="500"
+  />
+  <br />
+  <sub><i>Imagem 14 — Resultado da aferição da tensão em escala de tensão contínua de 20 V.</i></sub>
+  <p>&nbsp;</p>
+</div>
+
+<!-- TODO: continuar aqui -->
+
+O teste do carregador serviu como mais uma garantia e um diagnóstico preventivo.
+
+### 4. Desmontagem e troca das baterias
+
+> [!CAUTION]
+> Não tomar medidas antiestáticas pode levar a queima de componentes eletrônicos e consequentemente sua inutilização.
+
+> [!WARNING]
+>🛡️ Segurança e Preparação da Bancada:
+>
+>- ⚠️ **Protocolo de Segurança Eletrostática (ESD):** 
+> Antes de qualquer intervenção interna na placa-mãe.
+>
+>- **Ferramentas:** Jogo de chaves de precisão e espátulas plásticas.
+>
+>- **Organização dos parafusos:**
+> 
+
+
+
+
 
 ### **🔍 Matriz de Testes**
+
+A matriz de testes abaixo fornece de forma mais rápida e resumida os resultados dos testes. Isso é importante para saber se segue ou não com passos do plano que dependem dos resultados. Ou seja, ela ajuda a tomar uma decisão racional conforme a especificidade de cada resultado possível.
 
 | Componente Analisado | Hipótese do Problema | Teste/Procedimento Executado | Resultado do Teste | Status |
 | :--- | :--- | :--- | :--- | :---: |
@@ -367,6 +472,8 @@ A matriz de testes abaixo fornece de forma mais rápida e resumida os resultados
 - Comparação entre UEFI e Legacy (BIOS) da comunidade da Microsoft: https://learn.microsoft.com/pt-br/answers/questions/4199903/uefi-ou-legacy-windows-10 
 
 - Resposta da Acer sobre como resetar a bateria do notebook: https://community.acer.com/pt/kb/articles/75-reset-da-bateria-interna 
+
+- Documentação oficial da Microsoft sobre comandos com `powercfg`: https://learn.microsoft.com/pt-br/windows-hardware/design/device-experiences/powercfg-command-line-options
 
 - Resposta da Acer sobre a troca da bateria CMOS: https://community.acer.com/pt/kb/articles/14725-substituicao-da-bateria-cmos 
 

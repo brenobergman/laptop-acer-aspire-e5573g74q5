@@ -276,10 +276,11 @@ Do 1 ao 3 são feitas ações para garantir que é a bateria. Ao completar o pas
 
 Este é o passo onde ocorrem as intervenções apresentados no plano. Cada etapa é realizada por vez para garantir que de fato um passo resolve ou a sequência de passos está apresentando resultados.
 
-<!-- TODO: continuar aqui -->
+Seguindo o plano, realizou-se o reset da bateria. Para tal procedimento, um objeto recomendado a ser introduzido é um clipe de papel (de preferência com o arame com uma ponta reta). O equipamento deve estar desconectado do adaptador de 
+energia e toatalmente desligado. O clipe deve ser inserido até alcançar o componente (que nesse caso não é um botão que dá para sentir "clique" ao pressionar) e pressionado (sem forçar) por 5 segundos. Depois, esperar mais alguns segundos, para dissipar energia, e então conectar a fonte ao notebook e ligá-lo.
 
-A matriz de testes abaixo fornece de forma mais rápida e resumida os resultados dos testes. Isso é importante para saber se segue ou não com passos do plano que dependem dos resultados, ou seja, ela ajuda a tomar uma decisão racional conforme a especificidade de cada probabilidade.
-
+>[!WARNING]
+> Pressionar apenas um pouco. Pois o componente é tátil não um botão e apesar de não sentir o "clique", ele funciona sem pressão excessiva. Forçá-lo pode deformá-lo.
 
 <div align="center">
   <br />
@@ -290,6 +291,30 @@ A matriz de testes abaixo fornece de forma mais rápida e resumida os resultados
   />
   <br />
   <sub><i>Imagem 10 — Reset hole (orifício de reset) do Acer E5-573G-74Q5.</i></sub>
+  <p>&nbsp;</p>
+</div>
+
+<!-- TODO: continuar aqui - descrevendo o processo de checagem por software -->
+
+O processo de reset não teve efeito nenhum sobre o dispositivo. Logo, fora seguido com o próximo item do plano, a checagem por software do estado da bateria e seus registros.
+
+<div align="center">
+  <br />
+  <img
+    src="images/11-software-gerenc-bat.png"
+    alt=""
+    width="500"
+  />
+  <br />
+  <sub><i>Imagem 11  — .</i></sub>
+  <br /><br /><br />
+  <img
+    src="image"
+    alt="Texto"
+    width="500"
+  />
+  <br />
+  <sub><i>Imagem  — texto</i></sub>
   <p>&nbsp;</p>
 </div>
 
@@ -304,6 +329,7 @@ A matriz de testes abaixo fornece de forma mais rápida e resumida os resultados
 
 > **💡 Dica de bancada:** Mantenha os parafusos organizados em um organizzador magnético para evitar perdas.
 
+A matriz de testes abaixo fornece de forma mais rápida e resumida os resultados dos testes. Isso é importante para saber se segue ou não com passos do plano que dependem dos resultados. Ou seja, ela ajuda a tomar uma decisão racional conforme a especificidade de cada resultado possível.
 
 ### **🔍 Matriz de Testes**
 

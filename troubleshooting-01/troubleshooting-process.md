@@ -260,10 +260,10 @@ Do 1 ao 3 são feitas ações para garantir que é a bateria. Ao completar o pas
 5. Caso tudo continue indicando as baterias:
     - 5.1. Retirar a bateria principal.
     - 5.2. Verificar suas especificações.
-    - 5.3. Substituir por uma nova e compatível.
+    - 5.3. Substituir por uma nova e compatível e realizar teste de operação e salvamento de configurações da BIOS.
     - 5.4. Checar voltagem da bateria CMOS
     - 5.5. Se tensão abaixo do nominal: 
-        - 5.5.1. Substituir a célula CMOS.
+        - 5.5.1. Substituir a célula CMOS e verificar o salvamento de configurações.
     - 5.6. Se a bateria CMOS apresentar voltagem normal:
         - 5.6.1. Testar se configurações são preservadas com outra nova.
 6. Caso não esteja indicando as baterias, mas o carregador ou outro componente:
@@ -287,7 +287,7 @@ Uma matriz de testes fornece de forma mais rápida e resumida os resultados dos 
 | **Bateria Principal** | Travamento ou falha temporária no controle de carga. | Reset de energia da bateria via reset hole. | Não carrega. | ❌ Falha |
 | **Bateria Principal (via SO)** | Degradação química, perda de capacidade ou falha reportada. | Consultar diagnóstico/relatório de energia do Windows observando capacidade informada e avisos. |  Capacidade energética em 35%. | ❌ Falha |
 | **Carregador** | Mau contato, avaria no isolamento ou rompimento dos fios, tensão fora do normal. | Inspeção visual, aferição da tensão com multímetro. | Visualmente íntegro e tensão normal. | ✅ OK |
-| **Nova Bateria Principal** | Célula no fim da vida útil. | Desmontar/retirar bateria principal, conferir especificações e substituir por unidade compatível. | Operação e carga normalizadas com nova bateria. | ✅ OK |
+| **Nova Bateria Principal** | Bateria antiga no fim da vida útil. | Retirar bateria principal, conferir especificações e substituir por unidade compatível. Verificar se operação com o notebook e salvamento de configurações da BIOS está normal. | Operação normal e salva configurações da BIOS. | ✅ OK |
 | **Bateria CMOS** | Tensão baixa comprometendo o relógio/BIOS. | Medir tensão da bateria CMOS e substituir por célula nova se abaixo do valor nominal. | Tensão nominal em 0 V. | ❌ Falha |
 | **Nova Bateria CMOS** | Perda de retenção com tensão nominal abaixo. | Testar com outra célula CMOS nova. | Configurações da BIOS não preservadas. | ❌ Falha |
 
@@ -432,32 +432,152 @@ O teste do carregador serviu como mais uma garantia e um diagnóstico preventivo
 
 ### 4. Desmontagem e troca das baterias
 
-Diante dos testes e dá análise do que se tinha até então na matriz, ficou claro que a causa apontava para as baterias ainda. Portanto, o passo 5 e seus subitens foram seguidos.
+Diante dos testes e dá análise do que se tinha até então na matriz ficou claro que a causa apontava para as baterias ainda. Portanto, o passo 5 e seus subitens foram seguidos.
 
-<!-- TODO: continuar aqui -->
+Antes de qualquer intervenção de desmontagem do notebook, devem ser seguidos cuidados básicos para garantir o êxito da operação. O essencial para este procedimento foi o que está descrito abaixo. Dependendo do procedimento ou da gravidade do estado do equipamento, muitas outras boas práticas e protocolos devem ser seguidos.
 
 > [!CAUTION]
 > Não tomar medidas antiestáticas pode levar a queima de componentes eletrônicos e consequentemente sua inutilização.
 
 > [!WARNING]
-> 🛡️ Segurança e Preparação da Bancada:
+>
+> **🛡️ Segurança e Preparação da Bancada 🛡️**
+> --- 
 >
 > - ⚠️ **Protocolo de Segurança Eletrostática (ESD):** 
-> 
-> Antes de qualquer intervenção interna na placa-mãe:
->   
 >   - Desligar completamente o notebook.
 >   - Desconectar o carregador, periféricos e demais cabos.
-
+>   - Trabalhar em uma superfície rígida, limpa e seca, evitando carpete ou tapete.
+>   - Evitar roupas que acumulem eletricidade estática, como lã e tecidos sintéticos.
+>   - Se disponível, utilizar pulseira, manta e luvas antiestática (ESD).
+>   - Preferencialmente, ficar descalço para reduzir o acúmulo de carga eletrostática, especialmente em piso adequado (não carpetado).
+>   - Antes de tocar nos componentes internos, descarregar a eletricidade estática do corpo segurando em um objeto metálico devidamente aterrado por um tempo.
+>   - Evitar movimentos desnecessários, atrito com roupas e deslocamentos durante o procedimento.
+>   - Desconectar a bateria interna da placa-mãe antes de iniciar sua remoção.
+>   - Manusear baterias e componentes eletrônicos pelas bordas, evitando tocar nos contatos elétricos.
+>   - Não apoiar componentes eletrônicos diretamente sobre plástico comum, tecidos ou superfícies que acumulem estática.
+>   - Evitar ferramentas metálicas soltas sobre a placa-mãe, prevenindo curtos-circuitos.
 >
->- **Ferramentas:** 
+>- **🪛 Ferramentas:** 
 >   - jogo de chaves de precisão;
 >   - espátulas plásticas (ou cartão plástico);
 >   - pinças (opcional).
 >
->- **Organização dos parafusos:**
->
-> 
+>- **🚧 Organização da bancada:**
+>   - Limpar a bancada antes de iniciar o reparo.
+>   - Manter líquidos, alimentos e objetos desnecessários afastados.
+>   - Utilizar iluminação adequada para facilitar a visualização.
+>   - Separar ferramentas por categoria e frequência de uso.
+>   - Fotografar cada etapa da desmontagem para facilitar a remontagem.
+>   - Utilizar manta de reparos para organizar objetos e não riscar o notebook, (ou o melhor espaço disponível).
+>   - Separar componentes por tamanho, tipo e etapa de desmontagem.
+>   - Separar peças removidas das peças novas ou de reposição.
+>   - Recolocar ferramentas e componentes nos locais definidos após o uso.
+>   - Organizar os parafusos na ordem de desmontagem e separar parafusos por:
+>       - tamanho (comprimento e diâmetro);
+>       - tipo de cabeça (Phillips, Torx, Allen etc.);
+>       - tipo de rosca.
+>   - Agrupar parafusos semelhantes, mas de posições diferentes, em compartimentos distintos.
+
+Realizado o procedimento de ficar descalço e segurar em um objeto metálico aterrado, como não havia nenhum equipamento ESD até então, realizou-se o início da abertura do aparelho adotando juntamente todas as outras medidas essenciais. O notebook foi colocado em cima da manta para não riscar então foram sendo retirados os parafusos (mais de 10) e colocados no compartimento próprio da manta para que não fossem perdidos.
+
+<div align="center">
+  <br />
+  <img
+    src="images/15-organizacao-parafusos.png"
+    alt="Notebook sobre a manta de reparo sendo realizada a retirada de um parafuso com os parafusos sendo guardaddos no compartimento da manta."
+    width="500"
+  />
+  <br />
+  <sub><i>Imagem 15  — Organização dos parafusos durante desmontagem.</i></sub>
+  <p>&nbsp;</p>
+</div>
+
+Após retirar os parafusos visíveis deu-se o início do processo de alavancagem para desprender as travas plásticas da carcaça. No entanto, havia certa dificuldade. Até que se notou que neste modelo que tem um leitor de DVD, depois de retirar o parafuso que o prende, ele deve ser retirado puxando-o como uma gaveta para retirar os **3 parafusos debaixo dele** que prendem a carcaça. Isso foi simples de se descobrir e não causou nenhum dano por conta do olhar atento com a tensão das peças. Ou seja, houve cuidado e atenção para que não fosse forçada a carcaça. Caso contrário, isso poderia quebrar a carcaça.
+
+> [!IMPORTANT]
+> O processo de alavancagem com as espátulas plásticas deve ser feito com cuidado e sem forte tensão. Além disso, as espátulas não suportam tanta pressão. 
+
+<div align="center">
+  <br />
+  <img
+    src="images/16-espatulas-abertura.png"
+    alt="Espátulas em mãos sendo demostrada a sua propriedade de se quebrarem para não danificar o aparelho."
+    width="500"
+  />
+  <br />
+  <sub><i>Imagem 16  — Espátulas utilizadas. Elas se quebram, mas não danificam a carcaça durante abertura, se utilizadas corretamente.</i></sub>
+  <p>&nbsp;</p>
+</div>
+
+<!-- TODO: continuar aqui -->
+
+Ainda com todos os parafusos retiradas, a tampa inferior estava esbarrando nas entradas USB e demais. Isso ocorreu porque foi tentado retirar uniformemente, mas há um jeito correto de tirar que foi descoberto. Como de um lado ele tinha apenas uma USB e a entrada do
+
+<div align="center">
+  <br />
+  <img
+    src="images/17-baterias.png"
+    alt="Texto"
+    width="500"
+  />
+  <br />
+  <sub><i>Imagem 17 — Texto.</i></sub>
+  <p>&nbsp;</p>
+</div>
+
+
+
+<div align="center">
+  <br />
+  <img
+    src="images/18-circuito-cmos-rtc.jpg"
+    alt="Texto"
+    width="500"
+  />
+  <br />
+  <sub><i>Imagem 18 — Texto.</i></sub>
+  <p>&nbsp;</p>
+</div>
+
+
+
+<div align="center">
+  <br />
+  <img
+    src="images/19-3result-gemini.png"
+    alt="Texto"
+    width="500"
+  />
+  <br />
+  <sub><i>Imagem 19 — Texto.</i></sub>
+  <br /><br /><br />
+  <img
+    src="images/20-4result-gemini.png"
+    alt="Texto"
+    width="500"
+  />
+  <br />
+  <sub><i>Imagem 20 — texto</i></sub>
+  <br /><br /><br />
+  <img
+    src="images/21-1result-chatgpt.png"
+    alt="Texto"
+    width="500"
+  />
+  <br />
+  <sub><i>Imagem 21 — texto</i></sub>
+  <br /><br /><br />
+  <img
+    src="images/22-2result-chatgpt.png"
+    alt="Texto"
+    width="500"
+  />
+  <br />
+  <sub><i>Imagem 22 — texto</i></sub>
+  <p>&nbsp;</p>
+</div>
+
 
 <a id="observar-resultados-verificar"></a>
 
@@ -466,6 +586,18 @@ Diante dos testes e dá análise do que se tinha até então na matriz, ficou cl
 <a id="problema-resolvido"></a>
 
 ## 7. O problema foi resolvido?
+
+<div align="center">
+  <br />
+  <img
+    src="images/23-porcentagem-normal.png"
+    alt="Texto"
+    width="500"
+  />
+  <br />
+  <sub><i>Imagem 23 — Texto.</i></sub>
+  <p>&nbsp;</p>
+</div>
 
 > [!NOTE]
 >***Passo 8 é a própria documentação**

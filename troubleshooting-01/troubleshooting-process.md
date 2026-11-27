@@ -252,7 +252,9 @@ Do 1 ao 3 são feitas ações para garantir que é a bateria. Ao completar o pas
 
 1. Realizar reset da bateria e testar se carrega.
 2. Checar saúde da bateria pelo diagnóstico de gerenciamento de energia do Windows, estando atento a capacidade informada e aos avisos. 
-3. Checar carregador.
+3. Checar carregador:
+    - 3.1. Inspecionar visualmente.
+    - 3.2. Aferir tensão.
 4. Se o carregador estiver ruim:
     - 4.1. Tentar carregar com outro.
 5. Caso tudo continue indicando as baterias:
@@ -275,6 +277,22 @@ Do 1 ao 3 são feitas ações para garantir que é a bateria. Ao completar o pas
 ## 5. Implementar o plano 
 
 Este é o passo onde ocorrem as intervenções apresentados no plano. Cada etapa é realizada por vez para garantir que de fato um passo resolve ou a sequência de passos está apresentando resultados.
+
+### **🔍 Matriz de Testes**
+
+Uma matriz de testes fornece de forma mais rápida e resumida os resultados dos testes. Isso é importante para saber se segue ou não com passos do plano que dependem dos resultados, como no 5, do plano. Ou seja, ela ajuda a tomar uma decisão racional conforme a especificidade de cada resultado possível. A cada resultado que for tendo, ela vai sendo construída e preenchida concomitantemente conforme os testes. Abaixo se tem a matriz utilizada neste incidente, com os resultados já previamente contidos nela, mais abaixo os testes que ela guarda as informações.
+
+| Componente Analisado | Hipótese do Problema | Teste/Procedimento Executado | Resultado do Teste | Status |
+| :--- | :--- | :--- | :--- | :---: |
+| **Bateria Principal** | Travamento ou falha temporária no controle de carga. | Reset de energia da bateria via reset hole. | Não carrega. | ❌ Falha |
+| **Bateria Principal (via SO)** | Degradação química, perda de capacidade ou falha reportada. | Consultar diagnóstico/relatório de energia do Windows observando capacidade informada e avisos. |  Capacidade energética em 35%. | ❌ Falha |
+| **Carregador** | Mau contato, avaria no isolamento ou rompimento dos fios, tensão fora do normal. | Inspeção visual, aferição da tensão com multímetro. | Visualmente íntegro e tensão normal. | ✅ OK |
+| **Nova Bateria Principal** | Célula no fim da vida útil. | Desmontar/retirar bateria principal, conferir especificações e substituir por unidade compatível. | Operação e carga normalizadas com nova bateria. | ✅ OK |
+| **Bateria CMOS** | Tensão baixa comprometendo o relógio/BIOS. | Medir tensão da bateria CMOS e substituir por célula nova se abaixo do valor nominal. | Tensão nominal em 0 V. | ❌ Falha |
+| **Nova Bateria CMOS** | Perda de retenção com tensão nominal abaixo. | Testar com outra célula CMOS nova. | Configurações da BIOS não preservadas. | ❌ Falha |
+
+> [!IMPORTANT]
+> Uma rápida análise na matriz já confirma que era a bateria principal mesmo e destaca para averiguar o porquê de a CMOS, mesmo nova, não manter as configurações. 
 
 ### 1. Reset da Bateria
 
@@ -329,7 +347,7 @@ Umas funções disponíveis por linha de comando do diagnóstico de gerenciament
 É melhor realizar primeiro o `batteryreport` e depois deixar o dispositivo ocioso por um tempo e sem nenhuma aplicação aberta além do interpretador de comandos para utilizar o `energy`. Abaixo o passo a passo:
 
 ```
-Pesquisar > digitar "prompt de comando" > botão direito > "Executar como administrador" > "Sim" > Digitar "powercfg /batteryreport" > aguardar alguns segundos > Digitar "powercfg /energy" > Colar em uma nova aba "C:\Windows\System32\battery-report.html" e "C:\Windows\System32\energy-report.html" no navegador. 
+Tecla Windows > digitar "prompt de comando" > botão direito > "Executar como administrador" > "Sim" > Digitar "powercfg /batteryreport" > aguardar alguns segundos > Digitar "powercfg /energy" > Colar em uma nova aba "C:\Windows\System32\battery-report.html" e "C:\Windows\System32\energy-report.html" no navegador. 
 ```
 
 > [!NOTE]
@@ -410,41 +428,36 @@ Por fim, constatou-se que a tensão está íntegra. Considerando uma taxa de 5% 
   <p>&nbsp;</p>
 </div>
 
-<!-- TODO: continuar aqui -->
-
 O teste do carregador serviu como mais uma garantia e um diagnóstico preventivo.
 
 ### 4. Desmontagem e troca das baterias
+
+Diante dos testes e dá análise do que se tinha até então na matriz, ficou claro que a causa apontava para as baterias ainda. Portanto, o passo 5 e seus subitens foram seguidos.
+
+<!-- TODO: continuar aqui -->
 
 > [!CAUTION]
 > Não tomar medidas antiestáticas pode levar a queima de componentes eletrônicos e consequentemente sua inutilização.
 
 > [!WARNING]
->🛡️ Segurança e Preparação da Bancada:
+> 🛡️ Segurança e Preparação da Bancada:
 >
->- ⚠️ **Protocolo de Segurança Eletrostática (ESD):** 
-> Antes de qualquer intervenção interna na placa-mãe.
+> - ⚠️ **Protocolo de Segurança Eletrostática (ESD):** 
+> 
+> Antes de qualquer intervenção interna na placa-mãe:
+>   
+>   - Desligar completamente o notebook.
+>   - Desconectar o carregador, periféricos e demais cabos.
+
 >
->- **Ferramentas:** Jogo de chaves de precisão e espátulas plásticas.
+>- **Ferramentas:** 
+>   - jogo de chaves de precisão;
+>   - espátulas plásticas (ou cartão plástico);
+>   - pinças (opcional).
 >
 >- **Organização dos parafusos:**
+>
 > 
-
-
-
-
-
-### **🔍 Matriz de Testes**
-
-A matriz de testes abaixo fornece de forma mais rápida e resumida os resultados dos testes. Isso é importante para saber se segue ou não com passos do plano que dependem dos resultados. Ou seja, ela ajuda a tomar uma decisão racional conforme a especificidade de cada resultado possível.
-
-| Componente Analisado | Hipótese do Problema | Teste/Procedimento Executado | Resultado do Teste | Status |
-| :--- | :--- | :--- | :--- | :---: |
-| **Carregador** | Mau contato / Falha de módulo | Limpeza dos contatos e teste individual dos pentes em bancada | Memórias validadas e funcionais | 🟢 OK |
-| **Tela / Display** | Defeito no painel LCD | Conexão de vídeo externo via porta HDMI | Vídeo gerado no monitor externo | 🟢 OK |
-| **Cabo Flat (eDP)** | Rompimento ou conector solto | Inspeção de continuidade e verificação de encaixe lógico | Trava solta e oxidação leve | 🔴 Falha |
-
-
 
 <a id="observar-resultados-verificar"></a>
 

@@ -510,9 +510,16 @@ Após retirar os parafusos visíveis deu-se o início do processo de alavancagem
   <p>&nbsp;</p>
 </div>
 
+Ainda com todos os parafusos retiradas, a tampa inferior estava esbarrando nas entradas USB e demais. Isso ocorreu porque foi tentado retirar levantando uniformemente, mas há um jeito correto de tirar que foi descoberto. Como de um lado ele tinha apenas uma USB e a entrada do plugue de energia, tentou-se encaixar completamente todo o lado oposto para levantar esse. Passou-se pela porta USB e pela entrada de energia e logo já se pôde levantar este lado e o outro, onde se tinha mais portas. Mas, como sempre, tendo o cuidado, e depois de ter consultado uma referência para a desmontagem diante das experiências anteriores, já se tinha noção de que logo que fosse levantada a carcaça teria de desconectar com **cuidado o conector do alto-falante**. Os dois alto-falantes ficam presos na tampa inferior e por um fio fino é conectado na placa. Por isso é sempre recomendado manusear com cuidado e calma, um movimento brusco poderia romper o fio e criaria outro problema.
+
 <!-- TODO: continuar aqui -->
 
-Ainda com todos os parafusos retiradas, a tampa inferior estava esbarrando nas entradas USB e demais. Isso ocorreu porque foi tentado retirar uniformemente, mas há um jeito correto de tirar que foi descoberto. Como de um lado ele tinha apenas uma USB e a entrada do
+Uma vez tendo acesso à placa, depois de desconectar o fio dos alto-falantes, o primeiro passo deve ser desconectar a bateria. Com ela em mãos foi verificado:
+- **tamanho, formato e conexão com a placa;**
+- **modelo (AL15A32);**
+- **tensão (14,8 V);**
+- capacidade de carga elétrica (2500 mAh);
+- capacidade energética (37 Wh);
 
 <div align="center">
   <br />
